@@ -3,3 +3,36 @@
 }
 
 /* TODO: Include at least two (2) rules that change at least three (3) different properties total. */
+header {
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem; 
+    color: #215B32;
+}
+
+h2, h3, h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem; 
+}
+
+body p {
+    text-indent: 2em;
+    margin-top: 0;
+    margin-bottom: 1rem; 
+}
+
+section {
+    margin: 0;
+    padding: 0.5rem;
+}
+
+h4 {
+    text-indent: 1rem;
+}
+
+body {
+    line-height: 2;
+}
