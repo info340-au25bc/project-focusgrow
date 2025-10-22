@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    padding: 20px;
+}
+
+#content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#tasks-section h1,
+#schedule-section h2{
+    margin-bottom: 15px;
+}
+
+#tasks-section h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#schedule-section h2{
+    font-size: 28px;
+}
+
+#task-list {
+    list-style-position: outside;
+    padding-left: 20px;
+}
+
+#task-list li {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#schedule-section{
+    background-color: #d3d3d3;
+    padding: 30px;
+    min-height: 250px;
+}
