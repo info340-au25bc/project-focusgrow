@@ -1,21 +1,85 @@
 * {
+    box-sizing: border-box;
+}
+
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
     background-color: white;
-    padding: 20px;
+    height: calc(100vh - 60px);
+
+}
+ 
+:root{
+  --nav-bg: #c9e3c4; /* soft green for header */
+  --nav-text: #143a20; /* dark green text */
+  --muted: #e9efe6; /* very light neutral */
+  --card-bg: #d6e9d3; /* reusable card background */
+  --accent: #7bb23a; /* accent green */
+  --muted-gray: #e6e6e6;
+}
+
+
+/* Nav */
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* logo centered visually */
+  background-color: var(--nav-bg);
+  padding: 12px 28px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+#logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--nav-text);
+  margin: 0;
+  letter-spacing: 0.6px;
+}
+
+#nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#nav-links li a {
+  text-decoration: none;
+  color: var(--nav-text);
+  font-size: 0.95em;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+#nav-links li a:hover {
+  background-color: rgba(0,0,0,0.04);
+  color: var(--nav-text);
+  transform: translateY(-1px);
 }
 
 #content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    max-width: 1400px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 #tasks-section h1,
@@ -49,7 +113,117 @@ body {
 }
 
 #schedule-section{
-    background-color: #d3d3d3;
-    padding: 30px;
-    min-height: 250px;
+  background-color: #d3d3d3;
+  padding: 30px;
+  min-height: 250px;
+}
+
+/* PAGE: Dashboard (plant garden view) */
+
+#task-container {
+  display: flex;
+  min-height: calc(100vh - 64px);
+  background-color: #ffffff;
+  align-items: stretch;
+}
+
+/* side bar */
+#task-sidebar {
+  width: 260px;
+  margin: 20px 18px;
+  background-color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(16,24,20,0.04);
+}
+
+#task-sidebar-title {
+  font-size: 28px;
+  color: var(--nav-text);
+  text-align: center;
+  padding: 18px;
+}
+
+#task-main-content {
+  flex: 1;
+  background: linear-gradient(180deg,#ffffff 0%, #fbfdf9 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 40px 30px;
+}
+
+.task-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+/* the plant card things */
+.task-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: var(--card-bg);
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(15,20,16,0.04);
+  min-width: 140px;
+}
+
+.plant-icon {
+  width: 110px;
+  height: 110px;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
+}
+
+.health-bar {
+  width: 120px;
+  height: 12px;
+  background-color: var(--muted-gray);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.health-fill {
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #97d35b);
+  border-radius: 8px 0 0 8px;
+}
+
+/* dashboard navigation arrow thing */
+#task-nav-arrow-right {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: #6f6f6f;
+}
+
+/* overall status bar (bottom of page)  */
+#task-bottom-bar {
+  width: 88%;
+  height: 18px;
+  background-color: var(--muted-gray);
+  border-radius: 12px;
+  margin-top: 18px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px){
+  #task-sidebar{ display: none; }
+  #nav-links{ position: static; transform: none; right: auto; margin-left: 12px; }
+  #logo{ font-size: 1.4rem; }
+  .task-row{ gap: 36px; }
 }
