@@ -11,7 +11,8 @@
       <h1 class="logo">FocusGrow</h1>
     </header>
 
-    <aside class="sidebar">
+    <!-- Side Panel -->
+    <aside class="sidepanel">
       <section class="overall-focus">
         <h2>Overall Focus Time</h2>
         <p>00h 00m total</p>
@@ -26,8 +27,20 @@
       </section>
 
       <section class="reflection">
-        <h2>Reflection / Notes</h2>
-        <p>End-of-session notes here...</p>
+        <form>
+          <h2>Reflection / Notes</h2>
+          <div>
+            <label for="reflection_field"></label>
+            <textarea
+              class="form-control"
+              name="reflection"
+              id="reflection_field"
+            ></textarea>
+          </div>
+          <button type="submit">
+            <i class="">Complete</i>
+          </button>
+        </form>
       </section>
     </aside>
 
