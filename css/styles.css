@@ -10,8 +10,7 @@ html, body {
 body {
     font-family: Arial, sans-serif;
     background-color: white;
-    height: calc(100vh - 60px);
-
+    padding-top: 60px;
 }
  
 :root{
@@ -26,52 +25,50 @@ body {
 
 /* Nav */
 
-#navbar {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* logo centered visually */
-  background-color: var(--nav-bg);
-  padding: 12px 28px;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  font-family: "Poppins", sans-serif;
-  position: relative;
+nav {
+    width: 100%;
+    background-color: var(--nav-bg); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-#logo {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--nav-text);
-  margin: 0;
-  letter-spacing: 0.6px;
+nav h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--nav-text);
+    margin: 0;
+    padding-left: 10px;
 }
 
-#nav-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
 }
 
-#nav-links li a {
-  text-decoration: none;
-  color: var(--nav-text);
-  font-size: 0.95em;
-  font-weight: 600;
-  padding: 8px 10px;
-  border-radius: 8px;
-  transition: all 0.15s ease;
+nav ul li a {
+    color: var(--nav-text); 
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-#nav-links li a:hover {
-  background-color: rgba(0,0,0,0.04);
-  color: var(--nav-text);
-  transform: translateY(-1px);
+#nav-menu {
+    display: none;
+}
+
+
+nav ul li a:hover {
+    text-decoration: underline; 
 }
 
 #content-wrapper {
@@ -228,10 +225,60 @@ body {
   margin-top: 18px;
 }
 
-/* Responsive tweaks */
 @media (max-width: 900px){
-  #task-sidebar{ display: none; }
-  #nav-links{ position: static; transform: none; right: auto; margin-left: 12px; }
-  #logo{ font-size: 1.4rem; }
-  .task-row{ gap: 36px; }
+    #nav-links { 
+        position: absolute; 
+        transform: none; 
+        right: auto; 
+        margin-left: 12px; 
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: var(--nav-bg);
+        width: 100%;
+        top: 60px;
+        left: 0;
+        padding: 16px 24px;
+        gap: 10px;
+        border-top: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        display: none; /* hidden by default */
+    }
+
+    #nav-links.active {
+        display: flex;
+    }
+
+    #nav-links li a {
+        width: 100%;
+        padding: 10px 6px;
+        border-radius: 6px;
+    }
+
+    #nav-menu {
+        display: block;
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: var(--nav-text);
+        cursor: pointer;
+    }
+
+    #nav-menu:hover {
+        opacity: 0.8;
+    }
+
+    #logo { 
+        font-size: 1.4rem; 
+    }
+
+    #task-sidebar { 
+        display: none; 
+    }
+    .task-row { 
+        gap: 36px; 
+    }
 }
