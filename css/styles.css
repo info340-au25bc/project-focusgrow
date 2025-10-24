@@ -336,6 +336,7 @@ nav ul li a:hover {
   background-color: #143a20;
 }
 
+@media (max-width: 900px){
     #nav-links { 
         position: absolute; 
         transform: none; 
@@ -391,3 +392,4 @@ nav ul li a:hover {
     .task-row { 
         gap: 36px; 
     }
+}
