@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="author" content="Andy Nguyen" />
+    <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
     <title>Focus Timer</title>
@@ -23,11 +25,6 @@
 
     <!-- Side Panel -->
     <aside class="sidepanel">
-      <section class="overall-focus">
-        <h2>Overall Focus Time</h2>
-        <p>00h 00m total</p>
-      </section>
-
       <section class="task-list">
         <h2>Tasks / Task List</h2>
         <ul>
@@ -50,9 +47,10 @@
       </section>
     </aside>
 
-    <main>
-      <section class="timer-section">
-        <div class="container">
+    <!-- timer section -->
+    <main id="focus-timer-main">
+      <section class="timer-section" id="focus-timer-section">
+        <div class="container" id="focus-timer-container">
           <!-- Visual Graphic -->
           <div class="timer-visual" aria-label="Visual Progress Display">
             <img src="img/roots.png" alt="A small plant sprouting from the soil." />
