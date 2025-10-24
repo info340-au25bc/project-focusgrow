@@ -83,7 +83,8 @@ body {
 }
 
 #tasks-section h1,
-#schedule-section h2{
+#daily-tasks-section h2,
+.boxed-section h2{
     margin-bottom: 15px;
 }
 
@@ -92,16 +93,23 @@ body {
     margin-bottom: 20px;
 }
 
-#schedule-section h2{
+#daily-tasks-section h2,
+.boxed-section h2{
     font-size: 28px;
 }
 
-#task-list {
+#daily-tasks-section {
+    padding: 30px;
+}
+
+#task-list,
+#deadline-list {
     list-style-position: outside;
     padding-left: 20px;
 }
 
-#task-list li {
+#task-list li,
+#deadline-list li {
     font-size: 20px;
     margin-bottom: 10px;
 }
@@ -112,7 +120,7 @@ body {
     gap: 30px;
 }
 
-#schedule-section{
+.boxed-section{
   background-color: #d3d3d3;
   padding: 30px;
   min-height: 250px;
