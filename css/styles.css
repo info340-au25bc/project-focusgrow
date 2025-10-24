@@ -181,7 +181,7 @@ body {
 .plant-icon {
   width: 110px;
   height: 110px;
-  background-color: #dcdcdc;
+  background-color: var(--nav-bg);
   border-radius: 50%;
   box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
 }
@@ -189,7 +189,7 @@ body {
 .health-bar {
   width: 120px;
   height: 12px;
-  background-color: var(--muted-gray);
+  background-color: var(--nav-text);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -215,7 +215,7 @@ body {
 #task-bottom-bar {
   width: 88%;
   height: 18px;
-  background-color: var(--muted-gray);
+  background-color: var(--nav-bg);
   border-radius: 12px;
   margin-top: 18px;
 }
