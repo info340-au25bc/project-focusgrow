@@ -333,8 +333,131 @@ nav ul li a:hover {
 }
 
 .button-wrapper button:hover {
-  background-color: #143a20;
+  background-color: #6aa232;
 }
+
+/* focus timer side panel */
+.sidepanel {
+  position: fixed;
+  left: 0;
+  top: 64px;
+  width: 280px;
+  height: calc(100vh - 64px);
+  background-color: var(--muted);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.widget {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.widget:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Individual widget cards */
+.widget {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.widget:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Widget headers */
+.widget h2 {
+  font-size: 1.1rem;
+  color: var(--nav-text);
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* Task list widget */
+.widget.tasks ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.widget.tasks li {
+  font-size: 0.95rem;
+  color: #143a20;
+  margin-bottom: 6px;
+}
+
+/* Reflection widget */
+.widget.reflection form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.widget.reflection textarea {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #b4c7ad;
+  border-radius: 8px;
+  padding: 8px;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #143a20;
+  background-color: #ffffff;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.widget.reflection button {
+  align-self: flex-end;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.widget.reflection button:hover {
+  background-color: #6aa232;
+}
+
+/* collapsed state */
+.sidepanel.collapsed {
+  width: 70px;
+  padding: 16px 6px;
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+.sidepanel.collapsed .widget {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Media Rule(s) */
 
 @media (max-width: 900px){
     #nav-links { 
