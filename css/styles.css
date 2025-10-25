@@ -481,6 +481,26 @@ nav ul li a:hover {
   pointer-events: none;
 }
 
+/* Home page */
+
+#task-top-row #home-lg-img {
+  height: 250px;
+  width: 800px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
+}
+
+#task-bottom-row .home-med-img {
+  height: 220px;
+  width: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
+}
+
 /* Media Rule(s) */
 
 @media (max-width: 900px){
