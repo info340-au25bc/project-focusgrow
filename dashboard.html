@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Dishita Soni" />
-    <meta name="description" content="Static layout for the Time Spent on Task screen showing plant health icons and progress bars." />
-    <title>Time Spent on Task</title>
-    <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- author/description meta intentionally omitted on non-index pages -->
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <title>Time Spent on Task</title>
+  <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <header>
       <nav id="navbar">
-        <button id="nav-menu" aria-label="open menu">☰</button>
+        <button id="nav-menu" type="button" aria-label="open menu">☰</button>
         <h1 id="logo">FocusGrow</h1>
         <ul id="nav-links">
           <li><a href="index.html">Home</a></li>
@@ -22,13 +23,13 @@
         </ul>
       </nav>
     </header>
-    <div id="task-container">
-      <!-- sidebar -->
+
+  <main id="task-container">
       <aside id="task-sidebar">
         <h2 id="task-sidebar-title">Time Spent on Task</h2>
       </aside>
 
-      <main id="task-main-content">
+      <section id="task-main-content">
         <div id="task-top-row" class="task-row">
           <div class="task-card">
             <img src="img/plant-two.png" alt="Graphic of a plant" class="plant-icon">
@@ -36,9 +37,9 @@
               <div class="health-fill"></div>
             </div>
           </div>
-          <div class="task-card">
+            <div class="task-card">
             <img src="img/plant-one.png" alt="Graphic of a plant" class="plant-icon">
-            <div class="health-bar"> 
+            <div class="health-bar">
               <div class="health-fill"></div>
             </div>
           </div>
@@ -65,9 +66,13 @@
           </div>
         </div>
 
-        <div id="task-nav-arrow-right">&#8250;</div>
+        <div id="task-nav-arrow-right" aria-hidden="true">&#8250;</div>
         <div id="task-bottom-bar"></div>
-      </main>
-    </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 FocusGrow | <a href="mailto:contact@focusgrow.com">Contact Us</a></p>
+    </footer>
   </body>
 </html>

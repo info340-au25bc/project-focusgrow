@@ -1,3 +1,4 @@
+/* ----- Global ----- */
 * {
     box-sizing: border-box;
 }
@@ -5,29 +6,34 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: white;
-    padding-top: 60px;
-}
- 
-:root{
-  --nav-bg: #c9e3c4; /* soft green for header */
-  --nav-text: #143a20; /* dark green text */
-  --muted: #e9efe6; /* very light neutral */
-  --card-bg: #d6e9d3; /* reusable card background */
-  --accent: #7bb23a; /* accent green */
-  --muted-gray: #e6e6e6;
+    background-color: #ffffff;
+    padding-top: 60px; /* adjusting for nav height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
-/* Nav */
+/* ------ Color Palette Vars ----- */
+:root {
+    --nav-bg: #c9e3c4;
+    --nav-text: #143a20;
+    --muted: #e9efe6;
+    --card-bg: #d6e9d3;
+    --accent: #7bb23a;
+    --muted-gray: #e6e6e6;
+}
+
+/* ----- Nav Bar ----- */
 
 nav {
     width: 100%;
-    background-color: var(--nav-bg); 
+    background-color: var(--nav-bg);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,507 +62,530 @@ nav ul {
 }
 
 nav ul li a {
-    color: var(--nav-text); 
+    color: var(--nav-text);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
 #nav-menu {
     display: none;
 }
 
+/* Accessibility helpers */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+    border: 0; padding: 0; margin: -1px;
+}
 
-nav ul li a:hover {
-    text-decoration: underline; 
+/* Mobile-first baseline (small screens) */
+#nav-links {
+    display: none; /* collapsed menu by default on small screens */
+}
+
+#nav-links.active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#nav-menu {
+    display: block; /* show menu button on small screens */
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--nav-text);
+    cursor: pointer;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#logo { font-size: 1.4rem; }
+
+#page-container { padding: 20px; }
+
+.task-row { gap: 36px; }
+
+#task-sidebar { display: none; }
+
+#task-main-content { padding: 20px; }
+
+#task-top-row #home-lg-img { width: 100%; height: auto; }
+#task-bottom-row .home-med-img { width: 100%; height: auto; }
+
+
+/* ----- Footer ----- */
+
+footer {
+        background-color: var(--nav-bg);
+        color: var(--nav-text);
+        text-align: center;
+        padding: 14px 24px;
+        font-size: 0.95rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.04);
+    margin-top: 40px;
+    flex-shrink: 0; /* keep footer visible at bottom */
+}
+
+/* Make main content expand to push footer to bottom when needed */
+main {
+    flex: 1 0 auto;
+}
+
+footer a {
+    color: var(--nav-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.15s ease;
+}
+
+footer a:hover {
+    opacity: 0.8;
+}
+
+
+/* ----- Daily Goals Page ----- */
+
+#page-container {
+    padding: 40px 60px;
+}
+
+#page-title {
+    font-size: 2rem;
+    color: var(--nav-text);
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 #content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  max-width: 1400px;
-  margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-#tasks-section h1,
-#daily-tasks-section h2,
-.boxed-section h2{
-    margin-bottom: 15px;
-}
-
-#tasks-section h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
+#daily-tasks-section, #info-column {
+    background-color: var(--muted);
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 #daily-tasks-section h2,
-.boxed-section h2{
-    font-size: 28px;
+.boxed-section h2 {
+    color: var(--nav-text);
+    font-size: 1.5rem;
+    margin-top: 0;
 }
 
-#daily-tasks-section {
-    padding: 30px;
-}
-
-#task-list,
-#deadline-list {
+#task-list, #deadline-list {
     list-style-position: outside;
     padding-left: 20px;
 }
 
-#task-list li,
-#deadline-list li {
-    font-size: 20px;
-    margin-bottom: 10px;
+#task-list li, #deadline-list li {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--nav-text);
 }
 
-#info-column {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.boxed-section {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.boxed-section{
-  background-color: #7bb23a;
-  padding: 30px;
-  min-height: 250px;
-}
-
-/* PAGE: Dashboard (plant garden view) */
+/* ----- Dashboard (Plant Garden) ----- */
 
 #task-container {
-  display: flex;
-  min-height: calc(100vh - 64px);
-  background-color: #ffffff;
-  align-items: stretch;
+    display: flex;
+    min-height: calc(100vh - 64px);
+    background-color: #ffffff;
+    align-items: stretch;
 }
 
-/* side bar */
 #task-sidebar {
-  width: 260px;
-  margin: 20px 18px;
-  background-color: var(--muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(16,24,20,0.04);
+    width: 260px;
+    margin: 20px 18px;
+    background-color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(16,24,20,0.04);
 }
 
 #task-sidebar-title {
-  font-size: 28px;
-  color: var(--nav-text);
-  text-align: center;
-  padding: 18px;
+    font-size: 28px;
+    color: var(--nav-text);
+    text-align: center;
+    padding: 18px;
 }
 
 #task-main-content {
-  flex: 1;
-  background: linear-gradient(180deg,#ffffff 0%, #fbfdf9 50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 40px 30px;
+    flex: 1;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdf9 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 40px 30px;
 }
 
 .task-row {
-  display: flex;
-  justify-content: center;
-  gap: 80px;
-  margin-bottom: 48px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
 }
 
-/* the plant card things */
 .task-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  background: var(--card-bg);
-  padding: 22px;
-  border-radius: 12px;
-  box-shadow: 0 6px 14px rgba(15,20,16,0.04);
-  min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(15,20,16,0.04);
+    min-width: 140px;
 }
 
 .plant-icon {
-  width: 110px;
-  height: 110px;
-  background-color: var(--nav-bg);
-  border-radius: 50%;
-  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
+    width: 28vw;
+    max-width: 140px;
+    /* maintain a perfect circle without fixed px heights */
+    aspect-ratio: 1 / 1;
+    background-color: var(--nav-bg);
+    border-radius: 50%;
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
 }
 
 .health-bar {
-  width: 120px;
-  height: 12px;
-  background-color: var(--nav-text);
-  border-radius: 8px;
-  overflow: hidden;
+    width: min(34vw, 140px);
+    height: 0.7rem; 
+    background-color: var(--nav-text);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .health-fill {
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), #97d35b);
-  border-radius: 8px 0 0 8px;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #97d35b);
+    border-radius: 8px 0 0 8px;
 }
 
-/* dashboard navigation arrow thing */
 #task-nav-arrow-right {
-  position: absolute;
-  right: 28px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 36px;
-  color: #6f6f6f;
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 36px;
+    color: #6f6f6f;
 }
 
-/* overall status bar (bottom of page)  */
 #task-bottom-bar {
-  width: 88%;
-  height: 18px;
-  background-color: var(--nav-bg);
-  border-radius: 12px;
-  margin-top: 18px;
+    width: 88%;
+    height: 18px;
+    background-color: var(--nav-bg);
+    border-radius: 12px;
+    margin-top: 18px;
 }
 
+/* ----- Focus Timer Page ----- */
 
-/* PAGE: Focus Timer/Reflection */
 #focus-timer-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 250px);
-  background-color: #ffffff;
-}
-
-#focus-timer-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 250px);
+    background-color: #ffffff;
 }
 
 #focus-timer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
 }
 
-/* plant progress visual */
 .timer-visual {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-color: #e9efe6;
-  border: 5px solid #7bb23a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  box-shadow: rgba(0, 0, 0, 0.08);
-  margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #e9efe6;
+    border: 5px solid #7bb23a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0 auto;
 }
 
 .timer-visual img {
-  width: 80%;
-  height: auto;
-  border-radius: 50%;
-  object-fit: contain;
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: contain;
 }
 
-/* big time display */
 .time-display {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #143a20;
-  text-align: center;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #143a20;
+    text-align: center;
 }
 
-/* three way toggle mode selector (the good stuff) */
+/* mode selector toggle */
 .mode-selector {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .mode-toggle {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #e9efe6;
-  border-radius: 9999px;
-  padding: 6px;
-  width: 330px;
-  height: 50px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e9efe6;
+    border-radius: 9999px;
+    padding: 6px;
+    width: 330px;
+    height: 50px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 /* hide radio buttons */
 .mode-toggle input {
-  display: none;
+    display: none;
 }
 
-/* button labels */
 .mode-toggle label {
-  flex: 1;
-  text-align: center;
-  line-height: 38px;
-  font-weight: 600;
-  color: #143a20;
-  cursor: pointer;
-  z-index: 2;
-  transition: color 0.25s ease;
-  position: relative;
+    flex: 1;
+    text-align: center;
+    line-height: 38px;
+    font-weight: 600;
+    color: #143a20;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.25s ease;
+    position: relative;
 }
 
-/* slider */
 .toggle-indicator {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  height: calc(100% - 10px);
-  width: calc((100% - 10px) / 3);
-  background-color: #7bb23a;
-  border-radius: 9999px;
-  transition: transform 0.3s ease;
-  z-index: 1
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: calc(100% - 10px);
+    width: calc((100% - 10px) / 3);
+    /* darker green for better contrast with white text */
+    background-color: #288734;
+    border-radius: 9999px;
+    transition: transform 0.3s ease;
+    z-index: 1;
 }
 
 #short-break:checked ~ .toggle-indicator {
-  transform: translateX(100%);
+    transform: translateX(100%);
 }
 
 #long-break:checked ~ .toggle-indicator {
-  transform: translateX(200%)
+    transform: translateX(200%);
 }
 
-/* labels change color when active/checked */
-#pomodoro:checked + label, #short-break:checked + label, #long-break:checked + label {
-  color: #ffffff; 
+#pomodoro:checked + label,
+#short-break:checked + label,
+#long-break:checked + label {
+    /* keep labels dark for legibility when partly over a light background */
+    color: var(--nav-text);
 }
 
 .button-wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .button-wrapper button {
-  background-color: #7bb23a;
-  color: white;
-  font-weight: 500;
-  font-size: 1.05em;
-  border-radius: 10px;
-  padding: 10px 18px;
-  cursor: pointer;
-  transition: background 0.2s ease;
+    background-color: #7bb23a;
+    color: white;
+    font-weight: 500;
+    font-size: 1.05em;
+    border-radius: 10px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 .button-wrapper #start-button {
-  background-color: #5ab966;
+    /* darker start for contrast */
+    background-color: #288734;
+    color: #ffffff;
 }
+
 .button-wrapper #stop-button {
-  background-color: #c35858;
+    /* darker stop/red */
+    background-color: #bf5454;
+    color: #ffffff;
 }
+
 .button-wrapper #reset-button {
-  background-color: #d5ab4a;
+    /* darker reset/amber */
+    background-color: #996f0e;
+    color: #ffffff;
 }
 
 .button-wrapper button:hover {
-  opacity: 80%;
-  transform: translateY(2px);
+    opacity: 0.85;
+    transform: translateY(2px);
 }
 
 /* focus timer side panel */
 .sidepanel {
-  position: fixed;
-  left: 0;
-  top: 64px;
-  width: 280px;
-  height: calc(100vh - 64px);
-  margin: 20px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  overflow-y: auto;
+    position: fixed;
+    left: 0;
+    top: 64px;
+    width: 280px;
+    height: calc(100vh - 64px);
+    margin: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
 }
 
-/* Individual widget cards */
 .widget {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  padding: 16px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .widget:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* Widget headers */
 .widget h2 {
-  font-size: 1.1rem;
-  color: var(--nav-text);
-  margin: 0 0 8px 0;
-  font-weight: 700;
-  letter-spacing: 0.3px;
+    font-size: 1.1rem;
+    color: var(--nav-text);
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    letter-spacing: 0.3px;
 }
 
-/* Task list widget */
 .widget.tasks ul {
-  list-style: disc;
-  padding-left: 10px;
-  margin: 0;
+    list-style: disc;
+    padding-left: 10px;
+    margin: 0;
 }
 
 .widget.tasks li {
-  font-size: 0.95rem;
-  color: #143a20;
-  margin-bottom: 6px;
+    font-size: 0.95rem;
+    color: #143a20;
+    margin-bottom: 6px;
 }
 
-/* Reflection widget */
 .widget.reflection form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .widget.reflection textarea {
-  width: 100%;
-  min-height: 100px;
-  border: 1px solid #b4c7ad;
-  border-radius: 8px;
-  padding: 8px;
-  resize: none;
-  font-family: inherit;
-  font-size: 0.95rem;
-  color: #143a20;
-  background-color: #ffffff;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid #b4c7ad;
+    border-radius: 8px;
+    padding: 8px;
+    resize: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #143a20;
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .widget.reflection button {
-  align-self: flex-end;
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+    align-self: flex-end;
+    /* use a darker green for better contrast */
+    background-color: #4d840c;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .widget.reflection button:hover {
-  background-color: #6aa232;
+    background-color: #3f6e0a;
 }
 
-/* collapsed state */
-.sidepanel.collapsed {
-  width: 70px;
-  padding: 16px 6px;
-  overflow: hidden;
-  transition: width 0.3s ease;
-}
-
-.sidepanel.collapsed .widget {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Home page */
+/* ----- Home Page ----- */
 
 #task-top-row #home-lg-img {
-  height: 250px;
-  width: 800px;
-  border-radius: 12px;
-  object-fit: cover;
-  display: block;
-  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
+    height: 250px;
+    width: 800px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
 }
 
 #task-bottom-row .home-med-img {
-  height: 220px;
-  width: 220px;
-  border-radius: 12px;
-  object-fit: cover;
-  display: block;
-  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
+    height: 220px;
+    width: 220px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.02);
 }
 
-/* Media Rule(s) */
 
-@media (max-width: 900px){
-    #nav-links { 
-        position: absolute; 
-        transform: none; 
-        right: auto; 
-        margin-left: 12px; 
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: var(--nav-bg);
-        width: 100%;
-        top: 60px;
-        left: 0;
-        padding: 16px 24px;
-        gap: 10px;
-        border-top: 1px solid rgba(0,0,0,0.08);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-        display: none; /* hidden by default */
-    }
+/* ----- Media Queries (larger screens) ----- */
 
-    #nav-links.active {
-        display: flex;
-    }
+/* Tablet+ screens */
+@media (min-width: 601px) {
+    #page-container { padding: 40px 60px; }
+    .task-row { gap: 48px; }
+    #task-main-content { padding: 30px; }
+    .mode-toggle { width: 330px; }
+    .timer-visual { width: 300px; height: 300px; }
+}
 
-    #nav-links li a {
-        width: 100%;
-        padding: 10px 6px;
-        border-radius: 6px;
-    }
-
-    #nav-menu {
-        display: block;
-        position: absolute;
-        left: 18px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        font-size: 22px;
-        color: var(--nav-text);
-        cursor: pointer;
-    }
-
-    #nav-menu:hover {
-        opacity: 0.8;
-    }
-
-    #logo { 
-        font-size: 1.4rem; 
-    }
-
-    #task-sidebar { 
-        display: none; 
-    }
-    .task-row { 
-        gap: 36px; 
-    }
+/* Desktop screens */
+@media (min-width: 901px) {
+    /* show full nav */
+    #nav-links { display: flex; position: static; flex-direction: row; align-items: center; background: none; width: auto; padding: 0; gap: 24px; box-shadow: none; }
+    #nav-menu { display: none; }
+    #logo { font-size: 1.6rem; }
+    #content-wrapper { grid-template-columns: 1fr 1fr; }
+    #task-sidebar { display: flex; }
+    .task-row { gap: 80px; }
+    #task-top-row #home-lg-img { width: 800px; height: 250px; }
+    #task-bottom-row .home-med-img { width: 220px; height: 220px; }
 }

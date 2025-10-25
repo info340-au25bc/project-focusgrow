@@ -3,51 +3,64 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- author/description meta intentionally omitted on non-index pages -->
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.png" type="image/png">
         <title>Daily Goals</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <header>
-        <nav id="navbar">
-            <button id="nav-menu" aria-label="open menu">☰</button>
-            <h1 id="logo">FocusGrow</h1>
-            <ul id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="dailytasks.html">Daily Tasks</a></li>
-            <li><a href="focustimer.html">Focus Timer</a></li>
-            <li><a href="plantstore.html">Plant Store</a></li>
-            </ul>
-        </nav>
+            <nav id="navbar">
+                <button id="nav-menu" type="button" aria-label="open menu">☰</button>
+                <h1 id="logo">FocusGrow</h1>
+                <ul id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="dailytasks.html">Daily Tasks</a></li>
+                    <li><a href="focustimer.html">Focus Timer</a></li>
+                    <li><a href="plantstore.html">Plant Store</a></li>
+                </ul>
+            </nav>
         </header>
-        <div id="page-container">
-            <h1 id="page-title">Daily Goals</h1>
-            <div id="content-wrapper">
-                <div id="daily-tasks-section">
-                    <h2>Daily Tasks</h2>
-                    <ul id="task-list">
-                        <li>Task 1</li>
-                        <li>Task 2</li>
-                        <li>Task 3</li>
-                        <li>Task 4</li>
-                        <li>Task 5</li>
-                    </ul>
-                </div>
-                <div id="info-column">
-                    <div class="boxed-section">
-                        <h2>Deadlines for the Week</h2>
-                        <ul id="deadline-list">
-                            <li>Deadline 1</li>
-                            <li>Deadline 2</li>
-                            <li>Deadline 3</li>
-                            <li>Deadline 4</li>
+
+        <main id="main-content">
+            <div id="page-container">
+                <h1 id="page-title">Daily Goals</h1>
+                <div id="content-wrapper">
+                    <section id="daily-tasks-section" aria-labelledby="daily-tasks-heading">
+                        <h2 id="daily-tasks-heading">Daily Tasks</h2>
+                        <ul id="task-list">
+                            <li>Task 1</li>
+                            <li>Task 2</li>
+                            <li>Task 3</li>
+                            <li>Task 4</li>
+                            <li>Task 5</li>
                         </ul>
-                    </div>
-                    <div class="boxed-section">
-                        <h2>Learning / Reflection Space/ Notes</h2>
-                    </div>
+                    </section>
+
+                    <aside id="info-column">
+                        <h2 id="info-column-heading" class="visually-hidden">Information</h2>
+                        <section class="boxed-section" aria-labelledby="deadlines-heading">
+                            <h2 id="deadlines-heading">Deadlines for the Week</h2>
+                            <ul id="deadline-list">
+                                <li>Deadline 1</li>
+                                <li>Deadline 2</li>
+                                <li>Deadline 3</li>
+                                <li>Deadline 4</li>
+                            </ul>
+                        </section>
+
+                        <section class="boxed-section" aria-labelledby="notes-heading">
+                            <h2 id="notes-heading">Learning / Reflection Space / Notes</h2>
+                        </section>
+                    </aside>
                 </div>
             </div>
-        </div>
+        </main>
+
+        <footer>
+            <p>© 2025 FocusGrow | <a href="mailto:contact@focusgrow.com">Contact Us</a></p>
+        </footer>
     </body>
 </html>
