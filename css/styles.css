@@ -343,13 +343,11 @@ nav ul li a:hover {
   top: 64px;
   width: 280px;
   height: calc(100vh - 64px);
-  background-color: var(--muted);
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   overflow-y: auto;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
 }
 
 .widget {
@@ -378,6 +376,7 @@ nav ul li a:hover {
   flex-direction: column;
   gap: 12px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
 }
 
 .widget:hover {
