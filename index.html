@@ -1,278 +1,55 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/proposal.css" />
-    <title>Project Topic Proposal</title>
-  </head>
-  <body>
-    <header>
-      <h1>FocusGrow &#x1F331: <em>Visualize your focus as a garden</em></h1>
-    </header>
+    <head> 
+        <meta charset="utf-8">
 
-    <main>
-      <!-- Problem Desc. -->
-      <section>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- fonts -->  
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        
+        <title>Home</title>
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
         <header>
-          <h2>Problem Description</h2>
+            <nav id="navbar">
+                <button id="nav-menu" aria-label="open menu">☰</button>
+                <h1 id="logo">FocusGrow</h1>
+                <ul id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="dailytasks.html">Daily Tasks</a></li>
+                <li><a href="focustimer.html">Focus Timer</a></li>
+                <li><a href="plantstore.html">Plant Store</a></li>
+                </ul>
+            </nav>
         </header>
-        <p>
-          Modern productivity and focus applications are facing a crisis of
-          engagement and retention: the majority of users (<em>77-97%</em>)
-          abandon these tools within days or weeks, pointing to problems like
-          inflexible frameworks, lack of insightful feedback, and a disconnect
-          between virtual incentivization and actual progress (<a
-            href="https://contextsdk.com/blogposts/beating-the-day-1-drop-how-health-fitness-apps-can-build-habits-with-contextual-nudges"
-            target="_blank"
-            >Auersperg, 2025</a
-          >;
-          <a
-            href="https://www.linkedin.com/pulse/mobile-health-app-engagement-crisis-scott-6xryc"
-            target="_blank"
-            >Wallace 2024</a
-          >). Most timer-based solutions, such as standard Pomodoro apps,
-          enforce inflexible 25-minute work blocks that can interrupt natural
-          focus states and provide only basic analytics, while deeper
-          motivational needs and real progress tracking are left unaddressed (<a
-            href="https://leantime.io/pomodoro-technique/"
-            target="_blank"
-            >Folaron, 2024</a 
-          >). Although some apps attempt gamification, such as
-          <a
-            href="https://apps.apple.com/us/app/focus-plant-forest-phone-lock/id1459096306"
-            target="_blank"
-            >Forest’s
-          </a>
-          virtual tree-growing or
-          <a href="https://habitica.com/static/home">Habitica’s</a> RPG
-          features, these approaches are often seen as overly simplistic or
-          overcomplicated. As a result, users keep cycling through digital tools
-          that promise to build sustainable habits linked to real-world learning
-          and development. This ongoing gap between perceived productivity and
-          genuine growth highlights the core technological challenge modern
-          developers must address.
-        </p>
 
-        <p>
-          A main challenge in productivity software today is designing systems
-          that combine meaningful feedback, lasting motivation, and real skill
-          growth into a single, effective experience. Current products either
-          visualize productivity seemingly or lack mechanisms that emotionally
-          and behaviorally reinforce users’ learning goals, resulting in
-          fragmented, unsatisfying experiences that fail to convert effort into
-          meaningful growth (<a
-            href="https://www.produce8.com/resources/how-effective-is-the-pomodoro-technique"
-            target="_blank"
-            >Chan, 2023</a>).
-          In order to move beyond temporary engagement, a new approach has
-          to connect daily focus practices to visible, cumulative progress that
-          reflects both performance and personal development.
-          <em>FocusGrow</em> seeks to solve this by integrating focus,
-          reflection, and micro-skill-building with persistent, visible virtual
-          growth, addressing both the emotional and informational barriers that
-          cause most users to abandon existing solutions. It attempts to turn
-          productivity software from a temporary habit tracker into a true and
-          genuine learning and growth system by combining a flexible system that
-          supports self-driven motivation.
-        </p>
-      </section>
+        <!-- box 1 -->
+        <main id="task-main-content">
+            <div id="task-top-row" class="task-row">
+            <div class="task-card">
+                <a href="dashboard.html"><img src="/img/dashboard-static-preview.png" alt="a preview of the plant dashboard" style="height: 200px; width: 600px; border-radius: 12px;"></a>
+            </div>
+            </div>
 
-      <!-- App Desc. -->
-      <section>
-        <header>
-          <h2>App Description</h2>
-        </header>
-        <p>
-            The primary users are students, self-learners, and professionals who
-            want to improve their focus and learning. FocusGrow’s positive
-            feedback system and visual motivation provide an inclusive
-            environment to build self-discipline, where users can reduce guilt
-            around distraction and emphasize growth instead of perfection.
-        </p>
 
-        <!-- Use Case/User Story -->
-        <section>
-          <h3>Use Case/User Story</h3>
-
-          <!-- User Story -->
-          <section>
-            <h4>User Story</h4>
-            <p>
-              As a student or professional who struggles to stay consistent with
-              focus and learning, I want a web app that turns my daily focus
-              sessions into something that is gamified, fun, and rewarding. When
-              I set small learning goals and use the app’s focus timer, I want
-              to have my progress visualized as a growing digital garden so that
-              I can feel more motivated and track my growth over time.
-            </p>
-          </section>
-
-          <!-- Use Case Example -->
-          <section>
-            <h4>Use Case Example</h4>
-            <ul>
-              <li>
-                A college student logs into FocusGrow before studying for an
-                exam.
-              </li>
-              <li>
-                They set a daily goal of reviewing Chapter notes and start a
-                25-minute Pomodoro timer.
-              </li>
-              <li>
-                After finishing, they reflect on how focused they were and note
-                any distractions.
-              </li>
-              <li>
-                Over the week, their garden becomes a visual representation of
-                their work and focus.
-              </li>
-            </ul>
-          </section>
-        </section>
-
-        <!-- What Will Users Do with the App? -->
-        <section>
-          <h3>What Will Users Do with the App?</h3>
-          <p>Users will engage with three main interactive features:</p>
-
-          <section>
-            <h4>1. Reflection Tracker - Pomodoro</h4>
-            <ul>
-              <li>Users start a focus timer (e.g., 25 minutes).</li>
-              <li>
-                After the session, they input how focused they felt and note any
-                distractions.
-              </li>
-              <li>The reflection data updates the plant’s growth score.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h4>2. Daily Micro-Goal Builder</h4>
-            <ul>
-              <li>
-                Users create or choose micro-goals each day (e.g., “Practice
-                coding for 30 minutes” or “Workout for 1 hour”).
-              </li>
-              <li>
-                Completing goals rewards extra growth points and helps maintain
-                streaks of consistency.
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h4>3. Garden Dashboard</h4>
-            <ul>
-              <li>
-                Users can view their virtual garden, where each plant represents
-                a consistency streak.
-              </li>
-              <li>
-                The dashboard visualizes progress and shows user stats like
-                streaks and growth trends.
-              </li>
-            </ul>
-          </section>
-        </section>
-
-        <!-- What Kind of Information Will Users Be Viewing? -->
-        <section>
-          <h3>What Kind of Information Will Users Be Viewing?</h3>
-          <p>
-            Users will primarily view their own data generated through
-            interaction with the app, including:
-          </p>
-
-          <ul>
-            <li>Past focus sessions and their ratings</li>
-            <li>Distraction notes and reflections</li>
-            <li>Daily and weekly focus trends</li>
-            <li>Plant growth stages and progress</li>
-          </ul>
-        </section>
-
-        <!-- Functionality Walkthrough -->
-        <section>
-          <header>
-            <h2>Functionality Walkthrough</h2>
-          </header>
-
-          <section>
-            <h3>Reflection Tracker and Pomdoro Timer</h3>
-            <ul>
-              <li>Users start a focus timer (e.g., 25 minutes).</li>
-              <li>
-                After completing a session, they record their focus level and
-                distractions.
-              </li>
-              <li>
-                The better their focus score, the more “growth points” their
-                current plant earns.
-              </li>
-              <li>
-                This would then be represented as a plant sprite grows through
-                stages.
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h3>Daily Micro-Goal Builder</h3>
-            <ul>
-              <li>
-                Users will be able to create or choose a micro-skill goal each
-                day.
-              </li>
-              <li>
-                Completing the goal rewards extra growth points for their
-                plants.
-              </li>
-              <li>
-                If the user is able to complete their goal for multiple days
-                they will have a streak which helps them to accumulate more
-                points over time.
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h3>Garden Dashboard</h3>
-            <ul>
-              <li>
-                Users will be able to look at their virtual garden which will be
-                a grid of plants at their respective stage
-              </li>
-              <li>
-                Each plant will represent a certain focus task or goal of the
-                user
-              </li>
-              <li>
-                When a plant is grown users will be able to recieve new seeds
-                and then start the whole task and game again.
-              </li>
-            </ul>
-          </section>
-        </section>
-
-        <!-- How Does FocusGrow Solve The Problem? -->
-          <section>
-            <h3>How Does FocusGrow Solve The Problem?</h3>
-            <p>
-              FocusGrow addresses the problem of inconsistent focus and motivation
-              in learning by gamifying productivity. Instead of making focus feel
-              like a chore, it makes it into a growth experience where the game is
-              a plant life. The app motivates users to take small, consistent steps,
-              promoting self-awareness about distractions that are present. For
-              minority users or those struggling with academic burnout, this gamified
-              approach replaces stress and self-blame with self-discipline and
-              positive reinforcement. Therefore, FocusGrow helps users track time
-              and grow habits which turns into something rewarding and sustainable.
-            </p>
-        </section>
-      </section>
-    </main>
-  </body>
+            <div id="task-bottom-row" class="task-row">
+            <!-- box 2, 3, 4 -->
+                <div class="task-card">
+                <!-- box 2 -->
+                <h2><a href="dailytasks.html">Daily Tasks</a></h2>
+                </div>
+                <div class="task-card">
+                <!-- box 3 -->
+                <h2><a href="focustimer.html">Timer</a></h2>
+                </div>
+                <div class="task-card">
+                <!-- box 4 -->
+                <h2><a href="plantstore.html">Plant Store</a></h2>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>

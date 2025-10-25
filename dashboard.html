@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Dishita Soni" />
+    <meta name="description" content="Static layout for the Time Spent on Task screen showing plant health icons and progress bars." />
+    <title>Time Spent on Task</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <button id="nav-menu" aria-label="open menu">☰</button>
+        <h1 id="logo">FocusGrow</h1>
+        <ul id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="dailytasks.html">Daily Tasks</a></li>
+          <li><a href="focustimer.html">Focus Timer</a></li>
+          <li><a href="plantstore.html">Plant Store</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="task-container">
+      <!-- sidebar -->
+      <aside id="task-sidebar">
+        <h2 id="task-sidebar-title">Time Spent on Task</h2>
+      </aside>
+
+      <main id="task-main-content">
+        <div id="task-top-row" class="task-row">
+          <div class="task-card">
+            <img src="img/plant-two.png" alt="Graphic of a plant" class="plant-icon">
+            <div class="health-bar">
+              <div class="health-fill"></div>
+            </div>
+          </div>
+          <div class="task-card">
+            <img src="img/plant-one.png" alt="Graphic of a plant" class="plant-icon">
+            <div class="health-bar"> 
+              <div class="health-fill"></div>
+            </div>
+          </div>
+          <div class="task-card">
+            <img src="img/plant-three.png" alt="Graphic of a plant" class="plant-icon">
+            <div class="health-bar">
+              <div class="health-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="task-bottom-row" class="task-row">
+          <div class="task-card">
+            <img src="img/plant-two.png" alt="Graphic of a plant" class="plant-icon">
+            <div class="health-bar">
+              <div class="health-fill"></div>
+            </div>
+          </div>
+          <div class="task-card">
+            <img src="img/plant-three.png" alt="Graphic of a plant" class="plant-icon">
+            <div class="health-bar">
+              <div class="health-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="task-nav-arrow-right">&#8250;</div>
+        <div id="task-bottom-bar"></div>
+      </main>
+    </div>
+  </body>
+</html>
