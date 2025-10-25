@@ -290,6 +290,8 @@ nav ul li a:hover {
 .mode-toggle {
   position: relative;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #e9efe6;
   border-radius: 9999px;
   padding: 6px;
@@ -314,6 +316,7 @@ nav ul li a:hover {
   cursor: pointer;
   z-index: 2;
   transition: color 0.25s ease;
+  position: relative;
 }
 
 /* slider */
@@ -322,7 +325,7 @@ nav ul li a:hover {
   top: 5px;
   left: 5px;
   height: calc(100% - 10px);
-  width: calc(100% - 10px) / 3;
+  width: calc((100% - 10px) / 3);
   background-color: #7bb23a;
   border-radius: 9999px;
   transition: transform 0.3s ease;
@@ -330,12 +333,16 @@ nav ul li a:hover {
 }
 
 #short-break:checked ~ .toggle-indicator {
-  transform: translateX(220%);
+  transform: translateX(100%);
+}
+
+#long-break:checked ~ .toggle-indicator {
+  transform: translateX(200%)
 }
 
 /* labels change color when active/checked */
 #pomodoro:checked + label, #short-break:checked + label, #long-break:checked + label {
-  color: green; 
+  color: #ffffff; 
 }
 
 .button-wrapper {
