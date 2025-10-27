@@ -311,9 +311,10 @@ footer a:hover {
 
 #focus-timer-main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: calc(100vh - 250px);
+    justify-content: flex-start;
+    padding: 20px;
     background-color: #ffffff;
 }
 
@@ -460,16 +461,15 @@ footer a:hover {
 
 /* focus timer side panel */
 .sidepanel {
-    position: fixed;
-    left: 0;
-    top: 64px;
-    width: 280px;
-    height: calc(100vh - 64px);
-    margin: 20px 18px;
+    position: static;
+    width: 80%;
+    margin: 20px;
+    height: auto;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
-    overflow-y: auto;
+    order: 2;
 }
 
 .widget {
@@ -566,7 +566,7 @@ footer a:hover {
 }
 
 
-/* ----- Media Queries (larger screens) ----- */
+/* ----- Media Queries ----- */
 
 /* Tablet+ screens */
 @media (min-width: 601px) {
@@ -575,9 +575,6 @@ footer a:hover {
     #task-main-content { padding: 30px; }
     .mode-toggle { width: 330px; }
     .timer-visual { width: 300px; height: 300px; }
-    #focus-timer-main { flex-direction: column; justify-content: flex-start; align-items: center; padding: 20px; height: auto; }
-    .sidepanel { position: static; width: 80%; margin: 20px; flex-direction: column; flex-wrap: wrap; height: auto; gap: 16px; order: 2; }
-    .widget { padding: 20px; }
 }
 
 /* Desktop screens */
