@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="T.Reachny Chau, Dishita Soni, Andy Nguyen, and Veer Shah">
-    <meta name="description" content="Static homepage where the user would land when opening the website, with previews to the other parts of the site">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="img/favicon.png" type="image/png">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="T.Reachny Chau, Dishita Soni, Andy Nguyen, and Veer Shah">
+        <meta name="description" content="Static homepage where the user would land when opening the website, with previews to the other parts of the site">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>Home</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <header>
+            <nav id="navbar">
+                <button id="nav-menu" type="button" aria-label="open menu">☰</button>
+                <h1 id="logo">FocusGrow</h1>
+                <ul id="nav-links">
+                    <li><a href="proposal.html">Proposal</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="dailytasks.html">Daily Tasks</a></li>
+                    <li><a href="focustimer.html">Focus Timer</a></li>
+                    <li><a href="plantstore.html">Plant Store</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <title>Home</title>
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <header>
-      <nav id="navbar">
-        <button id="nav-menu" type="button" aria-label="open menu">☰</button>
-        <h1 id="logo">FocusGrow</h1>
-        <ul id="nav-links">
-          <li><a href="proposal.html">Proposal</a></li>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="dailytasks.html">Daily Tasks</a></li>
-          <li><a href="focustimer.html">Focus Timer</a></li>
-          <li><a href="plantstore.html">Plant Store</a></li>
-        </ul>
-      </nav>
-    </header>
+        <main id="task-main-content">
+            <div id="task-top-row" class="task-row">
+                <div class="task-card">
+                <a href="dashboard.html"><img src="img/dashboard-static-preview.png" alt="a preview of the plant dashboard" id="home-lg-img"></a>
+                </div>
+            </div>
 
-    <main id="task-main-content">
-      <div id="task-top-row" class="task-row">
-        <div class="task-card">
-          <a href="dashboard.html"><img src="img/dashboard-static-preview.png" alt="a preview of the plant dashboard" id="home-lg-img"></a>
-        </div>
-      </div>
+            <div id="task-bottom-row" class="task-row">
+                <div class="task-card">
+                    <a href="dailytasks.html"><img src="img/task-preview.png" alt="a preview of the daily tasks page" class="home-med-img"></a>
+                </div>
+                <div class="task-card">
+                    <a href="focustimer.html"><img src="img/timer-preview.png" alt="a preview of the timer page" class="home-med-img"></a>
+                </div>
+                <div class="task-card">
+                    <a href="plantstore.html"><img src="img/plant-store-preview.png" alt="a preview of the plant store page" class="home-med-img"></a>
+                </div>
+            </div>
+        </main>
 
-      <div id="task-bottom-row" class="task-row">
-        <div class="task-card">
-          <a href="dailytasks.html"><img src="img/task-preview.png" alt="a preview of the daily tasks page" class="home-med-img"></a>
-        </div>
-        <div class="task-card">
-          <a href="focustimer.html"><img src="img/timer-preview.png" alt="a preview of the timer page" class="home-med-img"></a>
-        </div>
-        <div class="task-card">
-          <a href="plantstore.html"><img src="img/plant-store-preview.png" alt="a preview of the plant store page" class="home-med-img"></a>
-        </div>
-      </div>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 FocusGrow | <a href="mailto:contact@focusgrow.com">Contact Us</a></p>
-    </footer>
-  </body>
+        <footer>
+            <p>&copy; 2025 FocusGrow | <a href="mailto:contact@focusgrow.com">Contact Us</a></p>
+        </footer>
+    </body>
 </html>
