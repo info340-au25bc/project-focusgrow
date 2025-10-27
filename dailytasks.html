@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="img/favicon.png" type="image/png">
-        <title>Daily Tasks</title>
+        <title>Daily Tasks - FocusGrow</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <header>
             <nav id="navbar">
-                <button id="nav-menu" type="button" aria-label="open menu">☰</button>
+                <input type="checkbox" id="nav-toggle" class="nav-toggle">
+                <label for="nav-toggle" id="nav-menu" aria-label="open menu">☰</label>
                 <h1 id="logo">FocusGrow</h1>
                 <ul id="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -28,7 +29,7 @@
                 <h2 id="page-title">Daily Tasks</h2>
                 <div id="content-wrapper">
                     <section id="daily-tasks-section" aria-labelledby="daily-tasks-heading">
-                        <h2 id="daily-tasks-heading">Daily Tasks</h2>
+                        <h3 id="daily-tasks-heading">Daily Tasks</h3>
                         <ul id="task-list">
                             <li>Finish INFO 340 Problem Set 05</li>
                             <li>Submit 5 Job Applications</li>
@@ -41,21 +42,20 @@
                     <aside id="info-column">
                         <h2 id="info-column-heading" class="visually-hidden">Information</h2>
                         <section class="boxed-section" aria-labelledby="deadlines-heading">
-                            <h2 id="deadlines-heading">Deadlines for the Week</h2>
+                            <h3 id="deadlines-heading">Deadlines for the Week</h3>
                             <ul id="deadline-list">
                                 <li>INFO 340 Problem Set 05 Due Tonight</li>
                                 <li>CSE 373 Project Due November 1st</li>
                                 <li>Interview October 27th</li>
-                                
                             </ul>
                         </section>
 
                         <section class="boxed-section" aria-labelledby="notes-heading">
-                            <h2 id="notes-heading">Learning / Reflection Space / Notes</h2>
-                            <ul id="deadline-list">
+                            <h3 id="notes-heading">Learning / Reflection Space / Notes</h3>
+                            <ul id="notes-list">
                                 <li>Was really distracted when finishing Problem Set 05 for INFO 340</li>
-                                <li> Seems like I pay more attention when I am listening to classical music</li>
-                                <li> Try changing study spaces every hour when studying for a longer time</li>
+                                <li>Seems like I pay more attention when I am listening to classical music</li>
+                                <li>Try changing study spaces every hour when studying for a longer time</li>
                             </ul>
                         </section>
                     </aside>
