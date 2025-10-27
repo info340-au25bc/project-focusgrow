@@ -89,6 +89,7 @@ nav ul li a:hover {
 /* Mobile-first baseline (small screens) */
 #nav-links {
     display: none; 
+}
 
 #nav-links.active {
     display: flex;
