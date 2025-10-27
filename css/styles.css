@@ -236,6 +236,73 @@ footer a:hover {
   margin-bottom: 0;
 }
 
+/* Reflection Form Styles */
+.reflection-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--nav-text);
+  font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #b4c7ad;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--nav-text);
+  background-color: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submit-note-btn {
+  align-self: flex-end;
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submit-note-btn:hover {
+  background-color: #6a9e33;
+  transform: translateY(-1px);
+}
+
+.submit-note-btn:active {
+  transform: translateY(0);
+}
+
 /* Dashboard (Plant Garden) */
 #task-container {
   display: flex;
