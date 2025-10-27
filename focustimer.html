@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="author" content="Andy Nguyen" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <title>Focus Timer</title>
-  </head>
-  <body>
-    <header>
-      <nav id="navbar">
-        <button id="nav-menu" aria-label="open menu">☰</button>
-        <h1 id="logo">FocusGrow</h1>
-        <ul id="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="dailytasks.html">Daily Tasks</a></li>
-          <li><a href="focustimer.html">Focus Timer</a></li>
-          <li><a href="plantstore.html">Plant Store</a></li>
-        </ul>
-      </nav>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>Focus Timer - FocusGrow</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <header>
+            <nav id="navbar">
+                <input type="checkbox" id="nav-toggle" class="nav-toggle">
+                <label for="nav-toggle" id="nav-menu" aria-label="open menu">☰</label>
+                <h1 id="logo">FocusGrow</h1>
+                <ul id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="dailytasks.html">Daily Goals</a></li>
+                    <li><a href="focustimer.html">Focus Timer</a></li>
+                    <li><a href="plantstore.html">Plant Store</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- Side Panel -->
-    <aside class="sidepanel">
-      <section class="widget task">
-        <h2>Tasks / Task List</h2>
-        <ul>
-          <li>Example Task 1</li>
-          <li>Example Task 2</li>
-        </ul>
-      </section>
+        <main id="focus-timer-main">
+            <aside class="sidepanel" aria-label="Timer sidebar with tasks and reflection">
+                <section class="widget task" aria-labelledby="widget-tasks-heading">
+                    <h2 id="widget-tasks-heading">Tasks</h2>
+                    <ul>
+                    <li>INFO 340 Problem Set 05</li>
+                    <li>CSE 373 Project</li>
+                    </ul>
+                </section>
 
-      <section class="widget reflection">
-        <form>
-          <h2>Reflection / Notes</h2>
-          <div>
-            <label for="reflection_field"></label>
-            <textarea class="form-control" name="reflection" id="reflection_field"></textarea>
-          </div>
-          <button type="submit" aria-label="Submit">
-            <em>Complete</em>
-          </button>
-        </form>
-      </section>
-    </aside>
+                <section class="widget reflection" aria-labelledby="widget-reflection-heading">
+                    <form>
+                    <h2 id="widget-reflection-heading">Reflection / Notes</h2>
+                    <div>
+                        <label for="reflection-field" class="visually-hidden">Reflection</label>
+                        <textarea class="form-control" name="reflection" id="reflection-field"></textarea>
+                    </div>
+                    <button type="submit" aria-label="Submit reflection">Complete</button>
+                    </form>
+                </section>
+            </aside>
 
-    <!-- side panel collapsed -->
-    <!-- <aside class="sidepanel collapsed">...</aside> -->
+            <section class="timer-section" id="focus-timer-section">
+                <div class="container" id="focus-timer-container">
+                    <div class="timer-visual">
+                        <img src="img/roots.png" alt="A small plant sprouting from the soil">
+                    </div>
 
-    <!-- timer section -->
-    <main id="focus-timer-main">
-      <section class="timer-section" id="focus-timer-section">
-        <div class="container" id="focus-timer-container">
-          <!-- Visual Graphic -->
-          <div class="timer-visual" aria-label="Visual Progress Display">
-            <img src="img/roots.png" alt="A small plant sprouting from the soil." />
-          </div>
+                    <div class="time-display">
+                        <span class="minutes">25</span>:<span class="seconds">00</span>
+                    </div>
 
-          <!-- Timer Display -->
-          <div class="time-display">
-            <span class="minutes">25</span>:<span class="seconds">00</span>
-          </div>
+                    <div class="mode-selector">
+                        <div class="mode-toggle">
+                            <input type="radio" id="pomodoro" name="mode" checked>
+                            <label for="pomodoro">Pomodoro</label>
 
-          <!-- Mode Selector Toggle-->
-          <div class="mode-selector">
-            <div class="mode-toggle">
-              <input type="radio" id="pomodoro" name="mode" checked />
-              <label for="pomodoro">Pomodoro</label>
+                            <input type="radio" id="short-break" name="mode">
+                            <label for="short-break">Short Break</label>
 
-              <input type="radio" id="short-break" name="mode" />
-              <label for="short-break">Short Break</label>
+                            <input type="radio" id="long-break" name="mode">
+                            <label for="long-break">Long Break</label>
 
-              <input type="radio" id="long-break" name="mode" />
-              <label for="long-break">Long Break</label>
+                            <div class="toggle-indicator"></div>
+                        </div>
+                    </div>
 
-              <div class="toggle-indicator"></div>
-            </div>
-          </div>
+                    <div class="button-wrapper">
+                        <button id="start-button" type="button">Start</button>
+                        <button id="stop-button" type="button">Stop</button>
+                        <button id="reset-button" type="button">Reset</button>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-          <!-- Timer Controls -->
-          <div class="button-wrapper">
-            <button id="start">Start</button>
-            <button id="stop">Stop</button>
-            <button id="reset">Reset</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </body>
+        <footer>
+            <p>&copy; 2025 FocusGrow | <a href="mailto:contact@focusgrow.com">Contact Us</a></p>
+        </footer>
+    </body>
 </html>

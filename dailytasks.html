@@ -3,51 +3,88 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily Goals</title>
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>Daily Goals - FocusGrow</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <header>
-        <nav id="navbar">
-            <button id="nav-menu" aria-label="open menu">☰</button>
-            <h1 id="logo">FocusGrow</h1>
-            <ul id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="dailytasks.html">Daily Tasks</a></li>
-            <li><a href="focustimer.html">Focus Timer</a></li>
-            <li><a href="plantstore.html">Plant Store</a></li>
-            </ul>
-        </nav>
+            <nav id="navbar">
+                <input type="checkbox" id="nav-toggle" class="nav-toggle">
+                <label for="nav-toggle" id="nav-menu" aria-label="open menu">☰</label>
+                <h1 id="logo">FocusGrow</h1>
+                <ul id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="dailytasks.html">Daily Tasks</a></li>
+                    <li><a href="focustimer.html">Focus Timer</a></li>
+                    <li><a href="plantstore.html">Plant Store</a></li>
+                </ul>
+            </nav>
         </header>
-        <div id="page-container">
-            <h1 id="page-title">Daily Goals</h1>
-            <div id="content-wrapper">
-                <div id="daily-tasks-section">
-                    <h2>Daily Tasks</h2>
-                    <ul id="task-list">
-                        <li>Task 1</li>
-                        <li>Task 2</li>
-                        <li>Task 3</li>
-                        <li>Task 4</li>
-                        <li>Task 5</li>
-                    </ul>
-                </div>
-                <div id="info-column">
-                    <div class="boxed-section">
-                        <h2>Deadlines for the Week</h2>
-                        <ul id="deadline-list">
-                            <li>Deadline 1</li>
-                            <li>Deadline 2</li>
-                            <li>Deadline 3</li>
-                            <li>Deadline 4</li>
+
+        <main id="main-content">
+            <div id="page-container">
+                <h2 id="page-title">Daily Goals</h2>
+                <div id="content-wrapper">
+                    <section id="daily-tasks-section" aria-labelledby="daily-tasks-heading">
+                        <h3 id="daily-tasks-heading">Daily Goals</h3>
+                        <ul id="task-list">
+                            <li>Finish INFO 340 Problem Set 05</li>
+                            <li>Submit 5 Job Applications</li>
+                            <li>Go to the Gym</li>
+                            <li>Finish CSE 373 Project</li>
+                            <li>Order new shoes</li>
                         </ul>
-                    </div>
-                    <div class="boxed-section">
-                        <h2>Learning / Reflection Space/ Notes</h2>
-                    </div>
+                    </section>
+
+                    <aside id="info-column">
+                        <h2 id="info-column-heading" class="visually-hidden">Information</h2>
+                        <section class="boxed-section" aria-labelledby="deadlines-heading">
+                            <h3 id="deadlines-heading">Deadlines for the Week</h3>
+                            <ul id="deadline-list">
+                                <li>INFO 340 Problem Set 05 Due Tonight</li>
+                                <li>CSE 373 Project Due November 1st</li>
+                                <li>Interview October 27th</li>
+                            </ul>
+                        </section>
+
+                        <section class="boxed-section" aria-labelledby="notes-heading">
+                            <h3 id="notes-heading">Add Reflection / Note</h3>
+                            <form class="reflection-form">
+                                <div class="form-group">
+                                    <label for="note-title">Note Title</label>
+                                    <input type="text" id="note-title" name="note-title" placeholder="e.g., Study Session Insights" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="note-content">Your Reflection</label>
+                                    <textarea id="note-content" name="note-content" rows="4" placeholder="What did you learn or notice about your productivity?" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="note-category">Category</label>
+                                    <select id="note-category" name="note-category">
+                                        <option value="">Select a category</option>
+                                        <option value="focus">Focus & Concentration</option>
+                                        <option value="environment">Study Environment</option>
+                                        <option value="time">Time Management</option>
+                                        <option value="motivation">Motivation</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="submit-note-btn">Save Note</button>
+                            </form>
+                        </section>
+                    </aside>
                 </div>
             </div>
-        </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 FocusGrow | <a href="mailto:contact@focusgrow.com">Contact Us</a></p>
+        </footer>
     </body>
 </html>
