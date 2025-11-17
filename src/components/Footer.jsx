@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="bg-nav-bg text-nav-text text-center py-3.5 px-6 text-sm border-t border-black/5 mt-10">
-      <p>
+    <footer className="bg-nav-bg text-nav-text text-center py-3 sm:py-3.5 px-4 sm:px-6 text-xs sm:text-sm border-t border-black/5 mt-6 sm:mt-10">
+      <p className="m-0">
         &copy; 2025 FocusGrow |{' '}
         <a href="mailto:contact@focusgrow.com" className="font-semibold hover:opacity-80">
           Contact Us
