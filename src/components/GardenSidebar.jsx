@@ -1,6 +1,6 @@
 export default function GardenSidebar({ totalPlants, totalHealth, coins }) {
   return (
-    <aside className="hidden lg:flex w-full lg:w-[260px] bg-muted flex-col p-4 rounded-lg shadow-card m-4">
+    <aside className="hidden lg:flex w-full lg:w-[260px] bg-muted flex-col p-4 rounded-lg shadow-card ml-20 mt-0 mb-10 sticky top-20 h-fit gap-6">
       <h2 className="text-xl font-bold text-nav-text text-center mb-4">Garden Stats</h2>
       
       <div className="space-y-3">

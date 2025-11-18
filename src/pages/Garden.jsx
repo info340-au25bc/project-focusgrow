@@ -2,7 +2,7 @@ import { useState } from 'react';
 import GardenCard from '../components/GardenCard';
 import GardenSidebar from '../components/GardenSidebar';
 import { usePlants } from '../hooks/usePlants';
-import { Droplet, Droplets } from 'lucide-react';
+import { Droplet } from 'lucide-react';
 
 
 export default function Garden() {
@@ -26,7 +26,7 @@ export default function Garden() {
   const bottomRow = ownedPlants.slice(3, 5);
 
   return (
-    <main className="flex bg-white flex-col lg:flex-row items-start">
+    <main className="flex bg-gradient-to-b from-white to-bg-gradient flex-col lg:flex-row items-center">
       <GardenSidebar 
         totalPlants={ownedPlants.length} 
         totalHealth={averageHealth}

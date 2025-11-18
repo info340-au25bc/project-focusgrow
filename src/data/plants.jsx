@@ -1,9 +1,7 @@
-// Import images at the top
-import plantOne from '../img/plant-one.png';
-import plantTwo from '../img/plant-two.png';
-import plantThree from '../img/plant-three.png';
+import plantOne from '/img/plant-one.png';
+import plantTwo from '/img/plant-two.png';
+import plantThree from '/img/plant-three.png';
 
-// Plant data with all the info you'll need
 export const PLANTS = [
   {
     id: 1,
@@ -175,7 +173,7 @@ export const PLANTS = [
   },
 ];
 
-// Helper functions for future use
+// Helper functions for firebase integration
 export const getPlantById = (id) => {
   return PLANTS.find(plant => plant.id === id);
 };

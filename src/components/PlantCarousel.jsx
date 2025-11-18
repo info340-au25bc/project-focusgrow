@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PlantCard from './PlantCard';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 
 export default function PlantCarousel({ plants, onPlantClick }) {
@@ -45,7 +46,7 @@ export default function PlantCarousel({ plants, onPlantClick }) {
             className="absolute left-0 md:left-4 lg:left-7 top-1/2 -translate-y-1/2 text-3xl md:text-4xl lg:text-5xl text-nav-text bg-white/80 hover:bg-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shadow-md hover:shadow-lg transition-all z-10"
             aria-label="Previous plants"
           >
-            &#8249;
+            <ArrowRight className="rotate-180" />
           </button>
 
           <button
@@ -53,7 +54,7 @@ export default function PlantCarousel({ plants, onPlantClick }) {
             className="absolute right-0 md:right-4 lg:right-7 top-1/2 -translate-y-1/2 text-3xl md:text-4xl lg:text-5xl text-nav-text bg-white/80 hover:bg-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shadow-md hover:shadow-lg transition-all z-10"
             aria-label="Next plants"
           >
-            &#8250;
+            <ArrowLeft className="rotate-180" />
           </button>
         </>
       )}
