@@ -2,88 +2,110 @@ import { useState } from 'react';
 import TodoSection from '../components/TodoSection';
 
 export default function DailyTasks() {
-  const [tasks, setTasks] = useState(['Finish INFO 340 Problem Set 05', 'Go to the Gym']);
-  const [taskInput, setTaskInput] = useState('');
+  const [tasks, setTasks] = useState([
+    { text: 'Finish INFO 340 Problem Set 05', deadline: '2025-11-20' },
+    { text: 'Go to the Gym', deadline: '' }
+  ]);
 
-  const [deadlines, setDeadlines] = useState(['INFO 340 PS05 Due Tonight']);
-  const [deadlineInput, setDeadlineInput] = useState('');
+  const [taskForm, setTaskForm] = useState({ text: '', deadline: '' });
 
   const [notes, setNotes] = useState([]);
   const [noteInput, setNoteInput] = useState('');
 
-  function handleAddTask() {
-    if (taskInput.trim() !== '') {
-      setTasks([...tasks, taskInput]);
-      setTaskInput('');
-    }
-  }
+  const addTask = () => {
+    if (!taskForm.text.trim()) return;
 
-  function handleDeleteTask(index) {
-    const newTasks = tasks.filter((_, i) => i !== index);
-    setTasks(newTasks);
-  }
+    setTasks(prev => [...prev, { ...taskForm }]);
+    setTaskForm({ text: '', deadline: '' });
+  };
 
-  function handleAddDeadline() {
-    if (deadlineInput.trim() !== '') {
-      setDeadlines([...deadlines, deadlineInput]);
-      setDeadlineInput('');
-    }
-  }
+  const removeTask = (index) => {
+    setTasks(prev => prev.filter((_, i) => i !== index));
+  };
 
-  function handleDeleteDeadline(index) {
-    const newDeadlines = deadlines.filter((_, i) => i !== index);
-    setDeadlines(newDeadlines);
-  }
+  const sortedTasks = [...tasks].sort((a, b) => {
+    if (a.deadline && !b.deadline) return -1;
+    if (!a.deadline && b.deadline) return 1;
+    return a.deadline && b.deadline
+      ? new Date(a.deadline) - new Date(b.deadline)
+      : 0;
+  });
 
-  function handleAddNote() {
-    if (noteInput.trim() !== '') {
-      setNotes([...notes, noteInput]);
-      setNoteInput('');
-    }
-  }
+  const addNote = () => {
+    if (!noteInput.trim()) return;
 
-  function handleDeleteNote(index) {
-    const newNotes = notes.filter((_, i) => i !== index);
-    setNotes(newNotes);
-  }
+    setNotes(prev => [...prev, noteInput]);
+    setNoteInput('');
+  };
+
+  const removeNote = (index) => {
+    setNotes(prev => prev.filter((_, i) => i !== index));
+  };
 
   return (
-    <main className="min-h-[calc(100vh-64px)] bg-gradient-to-b from-white to-bg-gradient py-6 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-[calc(100vh-64px)] bg-gradient-to-b from-white to-bg-gradient py-6 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-bold text-nav-text text-center mb-8">
-          Daily Tasks
-        </h1>
+        <h1 className="text-4xl font-bold text-nav-text text-center mb-8">Daily Tasks</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
           <TodoSection
             title="Tasks"
-            items={tasks}
-            input={taskInput}
-            onInputChange={setTaskInput}
-            onAdd={handleAddTask}
-            onDelete={handleDeleteTask}
-            placeholder="Add a task..."
-          />
+            items={sortedTasks}
+            onAdd={addTask}
+            onDelete={removeTask}
+          >
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={taskForm.text}
+                onChange={(e) =>
+                  setTaskForm(f => ({ ...f, text: e.target.value }))
+                }
+                placeholder="Add a task..."
+                className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent"
+              />
+              <button
+                onClick={addTask}
+                className="bg-accent text-white px-6 py-2 rounded-lg hover:opacity-90"
+              >
+                Add
+              </button>
+            </div>
 
-          <TodoSection
-            title="Deadlines"
-            items={deadlines}
-            input={deadlineInput}
-            onInputChange={setDeadlineInput}
-            onAdd={handleAddDeadline}
-            onDelete={handleDeleteDeadline}
-            placeholder="Add a deadline..."
-          />
+            <input
+              type="date"
+              value={taskForm.deadline}
+              onChange={(e) =>
+                setTaskForm(f => ({ ...f, deadline: e.target.value }))
+              }
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent text-sm mt-2"
+            />
+          </TodoSection>
 
           <TodoSection
             title="Notes"
             items={notes}
-            input={noteInput}
-            onInputChange={setNoteInput}
-            onAdd={handleAddNote}
-            onDelete={handleDeleteNote}
-            placeholder="Add a note..."
-          />
+            onAdd={addNote}
+            onDelete={removeNote}
+          >
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={noteInput}
+                onChange={(e) => setNoteInput(e.target.value)}
+                placeholder="Add a note..."
+                className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent"
+              />
+              <button
+                onClick={addNote}
+                className="bg-accent text-white px-6 py-2 rounded-lg hover:opacity-90"
+              >
+                Add
+              </button>
+            </div>
+          </TodoSection>
+
         </div>
       </div>
     </main>
