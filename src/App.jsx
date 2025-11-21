@@ -5,7 +5,7 @@ import Garden from './pages/Garden';
 import DailyTasks from './pages/DailyTasks';
 import { PlantProvider } from './context/PlantContext';
 import Dashboard from './pages/Dashboard';
-
+import FocusTimer from './pages/FocusTimer';
 //add imports for rest of pages
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
             <Route path="/" element={<Dashboard/>} />  
             <Route path="/garden" element={<Garden/>} />
             <Route path="/daily-tasks" element={<DailyTasks/>} />
-            <Route path="/focus-timer" element={<div>Focus Timer</div>} />
+            <Route path="/focus-timer" element={<FocusTimer />} />
             <Route path="/plant-store" element={<PlantStore/>} />
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
