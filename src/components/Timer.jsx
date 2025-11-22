@@ -1,26 +1,35 @@
+// src/components/Timer.jsx
 import { useEffect, useMemo, useState } from "react";
 import TimerVisual from "./TimerVisual";
 import TimerModeToggle from "./TimerModeToggle";
 import TimerControls from "./TimerControls";
 
+// durations in seconds
 const DURATIONS = {
     pomodoro: 25 * 60,
     short: 5 * 60,
     long: 10 * 60,
 };
 
-export default function Timer() {
+export default function Timer({ onRunningChange }) {
     const [mode, setMode] = useState("pomodoro"); // "pomodoro" | "short" | "long"
     const [secondsLeft, setSecondsLeft] = useState(DURATIONS.pomodoro);
     const [isRunning, setIsRunning] = useState(false);
+
+    const notifyRunning = (running) => {
+        if (typeof onRunningChange === "function") {
+            onRunningChange(running);
+        }
+    };
 
     // reset timer
     useEffect(() => {
         setSecondsLeft(DURATIONS[mode]);
         setIsRunning(false);
+        notifyRunning(false);
     }, [mode]);
 
-    // countdown effect
+    // countdown
     useEffect(() => {
         if (!isRunning) return;
 
@@ -28,6 +37,8 @@ export default function Timer() {
             setSecondsLeft((prev) => {
                 if (prev <= 1) {
                     clearInterval(id);
+                    setIsRunning(false);
+                    notifyRunning(false);
                     return 0;
                 }
                 return prev - 1;
@@ -48,16 +59,25 @@ export default function Timer() {
         [secondsLeft, mode]
     );
 
-    const handleStart = () => setIsRunning(true);
-    const handleStop = () => setIsRunning(false);
+    const handleStart = () => {
+        setIsRunning(true);
+        notifyRunning(true);
+    };
+
+    const handleStop = () => {
+        setIsRunning(false);
+        notifyRunning(false);
+    };
+
     const handleReset = () => {
         setIsRunning(false);
         setSecondsLeft(DURATIONS[mode]);
+        notifyRunning(false);
     };
 
     return (
         <div className="flex flex-col items-center gap-6 md:gap-7">
-            {/* plant circle with progress ring */}
+            {/* plant visual with circular progress */}
             <TimerVisual progress={progress} />
 
             {/* big time */}
@@ -68,7 +88,7 @@ export default function Timer() {
             {/* mode toggle */}
             <TimerModeToggle mode={mode} onModeChange={setMode} />
 
-            {/* start / stop / reset */}
+            {/* controls */}
             <TimerControls
                 isRunning={isRunning}
                 onStart={handleStart}
