@@ -32,7 +32,8 @@ export default function DailyTasks() {
   });
 
   const handleAddNote = () => {
-    if (!noteInput.trim()) return;
+    if (noteInput.trim().length === 0) return;
+
     setNotes(prev => [...prev, noteInput]);
     setNoteInput('');
   };
