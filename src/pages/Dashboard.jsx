@@ -2,8 +2,7 @@ import HomeCard from "../components/HomeCard";
 
 export default function Dashboard() {
     return (
-        <body>
-            <main className="flex flex-col items-center gap-8 py-5">
+        <main className="flex flex-col items-center gap-8 py-5">
                 <div className="flex justify-center w-full">
                     <HomeCard href="/garden" src="../img/garden-preview.png" alt="Dashboard showing virtual plant garden with health bars" size="lg" />
                 </div>
@@ -13,7 +12,6 @@ export default function Dashboard() {
                     <HomeCard href="/focus-timer" src="img/timer-preview.png" alt="Focus timer with pomodoro settings" size="sm" />
                     <HomeCard href="/plant-store" src="img/plant-store-preview.png" alt="Plant store showing available plants"size="sm" />
                 </div>
-            </main>
-        </body>
+        </main>
     );
 }

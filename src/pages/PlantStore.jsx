@@ -16,11 +16,11 @@ export default function PlantStore() {
   const handlePurchase = () => {
     const success = purchasePlant(selectedPlant);
     if (success) {
-      alert(`Successfully purchased ${selectedPlant.name}!`);
+      alert(`Successfully purchased ${selectedPlant.name}!`); //TODO: fix alert to look nicer (popup component maybe)
       setSelectedPlant(null);
-      navigate('/garden');
+      navigate('/garden'); //using navigate to immediately redirect user to garden post purchase
     } else {
-      alert('Not enough coins!');
+      alert('Not enough coins!'); //TODO: fix alert to look nicer (popup component maybe)
     }
   };
 

@@ -16,10 +16,10 @@ function App() {
         <Layout>
         <Routes>
             <Route path="/" element={<Dashboard/>} />  
-            <Route path="/garden" element={<Garden/>} />
-            <Route path="/daily-tasks" element={<DailyTasks/>} />
-            <Route path="/focus-timer" element={<FocusTimer />} />
-            <Route path="/plant-store" element={<PlantStore/>} />
+            <Route path="garden" element={<Garden/>} />
+            <Route path="daily-tasks" element={<DailyTasks/>} />
+            <Route path="focus-timer" element={<FocusTimer />} />
+            <Route path="plant-store" element={<PlantStore/>} />
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </Layout>
