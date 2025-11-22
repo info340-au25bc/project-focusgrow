@@ -5,6 +5,7 @@ export default function TaskSection({ tasks, taskForm, setTaskForm, onAdd, onDel
     <div className="bg-card-bg p-4 sm:p-6 rounded-xl shadow-card">
       <h2 className="text-xl sm:text-2xl font-bold text-nav-text mb-4">Tasks</h2>
 
+      {/* input form */}
       <div className="space-y-2 mb-4">
         <div className="flex gap-2">
           <input
@@ -30,9 +31,10 @@ export default function TaskSection({ tasks, taskForm, setTaskForm, onAdd, onDel
         />
       </div>
 
+      {/* task list */}
       <ul className="space-y-2">
-        {tasks.map((task) => (
-          <TaskItem key={task.id} task={task} onDelete={onDelete} />
+        {tasks.map((t) => (
+          <TaskItem key={t.id} task={t} onDelete={onDelete} />
         ))}
       </ul>
 

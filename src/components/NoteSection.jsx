@@ -5,6 +5,7 @@ export default function NoteSection({ notes, noteInput, setNoteInput, onAdd, onD
     <div className="bg-card-bg p-4 sm:p-6 rounded-xl shadow-card">
       <h2 className="text-xl sm:text-2xl font-bold text-nav-text mb-4">Notes</h2>
 
+      {/* input form */}
       <div className="space-y-2 mb-4">
         <div className="flex gap-2">
           <input
@@ -23,9 +24,10 @@ export default function NoteSection({ notes, noteInput, setNoteInput, onAdd, onD
         </div>
       </div>
 
+      {/* note list */}
       <ul className="space-y-2">
-        {notes.map((note, index) => (
-          <NoteItem key={index} note={note} onDelete={onDelete} index={index} />
+        {notes.map((n, i) => (
+          <NoteItem key={i} note={n} onDelete={onDelete} idx={i} />
         ))}
       </ul>
 
