@@ -1,13 +1,15 @@
 export default function TimerControls({ isRunning, onStart, onStop, onReset }) {
+    const startBg = isRunning ? "rgba(21,128,61,0.6)" : "#15803d";
     return (
-        <div className="flex flex-wrap justify-center gap-3 mt-2">
+        <div className="flex gap-4 mt-2">
             <button
                 type="button"
                 onClick={onStart}
                 disabled={isRunning}
-                className={`px-5 py-2 rounded-lg text-white text-sm font-medium shadow-sm ${isRunning
-                    ? "bg-[#288734]/60 cursor-not-allowed"
-                    : "bg-[#288734] hover:brightness-95"
+                style={{ background: startBg }}
+                className={`px-6 py-2 rounded-lg text-white text-sm md:text-base font-medium shadow-sm${isRunning
+                    ? "bg-green-700/60 cursor-not-allowed"
+                    : "bg-green-700 hover:bg-green-800"
                     }`}
             >
                 Start
@@ -17,9 +19,10 @@ export default function TimerControls({ isRunning, onStart, onStop, onReset }) {
                 type="button"
                 onClick={onStop}
                 disabled={!isRunning}
-                className={`px-5 py-2 rounded-lg text-white text-sm font-medium shadow-sm ${!isRunning
-                    ? "bg-[#bf5454]/60 cursor-not-allowed"
-                    : "bg-[#bf5454] hover:brightness-95"
+                className={`px-6 py-2 rounded-lg text-sm md:text-base font-medium shadow-sm
+          ${!isRunning
+                        ? "bg-[#e7a2aa]/60 text-[#6f3137] cursor-not-allowed"
+                        : "bg-[#d9534f] text-white hover:brightness-105"
                     }`}
             >
                 Stop
@@ -28,8 +31,7 @@ export default function TimerControls({ isRunning, onStart, onStop, onReset }) {
             <button
                 type="button"
                 onClick={onReset}
-                className="px-5 py-2 rounded-lg text-white text-sm font-medium shadow-sm bg-[#996f0e] hover:brightness-95"
-            >
+                className="px-6 py-2 rounded-lg text-white text-sm md:text-base font-medium shadow-sm bg-[#996f0e] hover:brightness-105">
                 Reset
             </button>
         </div>
