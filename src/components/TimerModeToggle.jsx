@@ -5,8 +5,11 @@ const MODES = [
 ];
 
 export default function TimerModeToggle({ mode, onModeChange }) {
-    const index = mode === "pomodoro" ? 0 : mode === "short" ? 1 : 2;
-    const leftPercent = index * (100 / 3);
+    const modeCount = MODES.length;
+    let index = MODES.findIndex((m) => m.id === mode);
+    if (index === -1) index = 0;
+    const widthPercent = 100 / modeCount;
+    const leftPercent = index * widthPercent;
 
     return (
         <div className="w-full flex justify-center">
@@ -15,7 +18,7 @@ export default function TimerModeToggle({ mode, onModeChange }) {
                 <div
                     className="absolute top-1 bottom-1 rounded-full bg-[#1f7a30] transition-[left] duration-200"
                     style={{
-                        width: "33.3333%",
+                        width: `${widthPercent}%`,
                         left: `${leftPercent}%`,
                     }}
                     aria-hidden="true"

@@ -1,4 +1,3 @@
-// src/components/Timer.jsx
 import { useEffect, useMemo, useState } from "react";
 import TimerVisual from "./TimerVisual";
 import TimerModeToggle from "./TimerModeToggle";

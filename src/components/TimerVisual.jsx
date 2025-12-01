@@ -1,5 +1,18 @@
+import { useEffect, useRef, useState } from "react";
+
 export default function TimerVisual({ progress }) {
-    const clamped = Math.max(0, Math.min(progress, 1));
+    const [debouncedProgress, setDebouncedProgress] = useState(progress);
+    const timeoutRef = useRef();
+
+    useEffect(() => {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => {
+            setDebouncedProgress(progress);
+        }, 50);
+        return () => clearTimeout(timeoutRef.current);
+    }, [progress]);
+
+    const clamped = Math.max(0, Math.min(debouncedProgress, 1));
 
     const size = 260;
     const strokeWidth = 8;
@@ -31,7 +44,10 @@ export default function TimerVisual({ progress }) {
                     strokeLinecap="round"
                     strokeDasharray={circumference}
                     strokeDashoffset={dashOffset}
-                    style={{ transition: "stroke-dashoffset 0.2s linear" }}
+                    className="timer-progress"
+                    style={{
+                        transition: "stroke-dashoffset 0.2s cubic-bezier(0.4, 0, 0.2, 1)"
+                    }}
                 />
             </svg>
 
