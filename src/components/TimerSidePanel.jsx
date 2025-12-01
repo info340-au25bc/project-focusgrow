@@ -6,6 +6,7 @@ import TimerReflectionWidget from "./TimerReflectionWidget";
 export default function TimerSidePanel({ isTimerRunning, autoCollapse, onToggleAutoCollapse, }) {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
+    // if autoCollapse is disabled, do not update the collapsed state
     useEffect(() => {
         if (!autoCollapse) return;
         setIsCollapsed(isTimerRunning);
