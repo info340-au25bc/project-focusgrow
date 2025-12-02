@@ -3,31 +3,41 @@ import { useNavigate } from 'react-router-dom';
 import PlantCarousel from '../components/PlantCarousel';
 import { PLANTS } from '../data/plants';
 import { usePlants } from '../hooks/usePlants';
+import Notification from '../components/Notification.jsx';
 
 export default function PlantStore() {
   const [selectedPlant, setSelectedPlant] = useState(null);
-  const { coins, purchasePlant, ownedPlants } = usePlants();
+  const [notification, setNotification] = useState(null);
+  const { coins, purchasePlant, ownedPlants, loading, error } = usePlants();
   const navigate = useNavigate();
 
   const handlePlantClick = (plant) => {
     setSelectedPlant(plant);
   };
 
-  const handlePurchase = () => {
-    const success = purchasePlant(selectedPlant);
+  const handlePurchase = async () => {
+    if (!selectedPlant) return;
+
+    const success = await purchasePlant(selectedPlant);
+    
     if (success) {
-      alert(`Successfully purchased ${selectedPlant.name}!`); //TODO: fix alert to look nicer (popup component maybe)
+      setNotification({ message: `Successfully purchased ${selectedPlant.name}!`, type: 'success' });
       setSelectedPlant(null);
-      navigate('/garden'); //using navigate to immediately redirect user to garden post purchase
+      setTimeout(() => navigate('/garden'), 1500); 
     } else {
-      alert('Not enough coins!'); //TODO: fix alert to look nicer (popup component maybe)
+      setNotification({ message: 'Not enough coins or purchase failed!', type: 'error' });
     }
   };
 
-  // Filter out already owned plants
   const availablePlants = PLANTS.filter(
     plant => !ownedPlants.some(owned => owned.id === plant.id)
   );
+
+  if (loading) return null;
+
+  if (error) {
+    return <div className="p-8 text-red-600 font-bold">Error loading store: {error}</div>
+  }
 
   return (
     <main className="flex min-h-[calc(100vh-64px)] bg-white">
@@ -68,9 +78,9 @@ export default function PlantStore() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button 
                 onClick={handlePurchase} 
-                disabled={coins < selectedPlant.price}
+                disabled={coins === null || coins < selectedPlant.price}
                 className={`flex-1 py-2 sm:py-2.5 px-4 rounded-lg font-medium text-sm sm:text-base ${
-                  coins >= selectedPlant.price 
+                  coins !== null && coins >= selectedPlant.price 
                     ? 'bg-accent text-white hover:opacity-90' 
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
@@ -83,6 +93,13 @@ export default function PlantStore() {
             </div>
           </div>
         </div>
+      )}
+      {notification && (
+        <Notification 
+          message={notification.message} 
+          type={notification.type} 
+          onClose={() => setNotification(null)} 
+        />
       )}
     </main>
   );

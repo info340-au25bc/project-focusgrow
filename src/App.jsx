@@ -6,12 +6,12 @@ import DailyTasks from './pages/DailyTasks';
 import { PlantProvider } from './context/PlantContext';
 import Dashboard from './pages/Dashboard';
 import FocusTimer from './pages/FocusTimer';
-//add imports for rest of pages
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
 
-    // ADD ROUTES AS YOU MAKE UR PAGE
     <PlantProvider>
         <Layout>
         <Routes>
@@ -20,6 +20,8 @@ function App() {
             <Route path="daily-tasks" element={<DailyTasks/>} />
             <Route path="focus-timer" element={<FocusTimer />} />
             <Route path="plant-store" element={<PlantStore/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </Layout>

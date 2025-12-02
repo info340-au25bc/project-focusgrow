@@ -1,6 +1,18 @@
 import { Link } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
+import { usePlants } from '../hooks/usePlants';
 
 export default function NavLinks({ isOpen }) {
+  const { user } = usePlants();
+  const auth = getAuth();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
   const links = [
     { to: '/', label: 'Home' },
     { to: '/garden', label: 'My Garden' },
@@ -18,6 +30,22 @@ export default function NavLinks({ isOpen }) {
           </Link>
         </li>
       ))}
+      {user ? (
+        <li>
+          <button 
+            onClick={handleLogout}
+            className="text-nav-text no-underline font-medium text-sm sm:text-base hover:underline block py-1 lg:py-0"
+          >
+            Logout
+          </button>
+        </li>
+      ) : (
+        <li>
+          <Link to="/login" className="text-nav-text no-underline font-medium text-sm sm:text-base hover:underline block py-1 lg:py-0">
+            Login
+          </Link>
+        </li>
+      )}
     </ul>
   );
 }

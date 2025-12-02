@@ -5,7 +5,10 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full bg-nav-bg flex justify-between items-center px-4 sm:px-6 md:px-10 py-2.5 z-[1000] shadow-nav">
+    <nav 
+    className="fixed top-0 w-full bg-nav-bg flex justify-between items-center px-4 sm:px-6 md:px-10 py-2.5 z-[1000] shadow-nav"
+    style={{ '--navbar-height': '64px' }}
+    >
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="lg:hidden absolute left-2 sm:left-3 text-xl sm:text-2xl text-nav-text p-2 sm:p-2.5"
