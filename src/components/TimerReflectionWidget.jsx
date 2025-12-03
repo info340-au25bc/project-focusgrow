@@ -1,6 +1,16 @@
+import { useContext, useState } from 'react';
+import { TaskNotesContext } from '../context/TaskNotesContext';
+
 export default function TimerReflectionWidget() {
+    const { addNote } = useContext(TaskNotesContext);
+    const [reflectionText, setReflectionText] = useState('');
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (reflectionText.trim()) {
+            addNote(reflectionText);
+            setReflectionText('');
+        }
     };
 
     return (
@@ -16,6 +26,8 @@ export default function TimerReflectionWidget() {
                 </label>
                 <textarea name="reflection"
                     id="reflection-field"
+                    value={reflectionText}
+                    onChange={(e) => setReflectionText(e.target.value)}
                     placeholder="What did you learn or notice about your productivity?"
                     className="w-full min-h-[140px] rounded-lg border border-[#b4c7ad] 
                      bg-white px-4 py-3 text-sm text-[#143a20] shadow-inner resize-none" />

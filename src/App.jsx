@@ -4,6 +4,7 @@ import PlantStore from './pages/PlantStore';
 import Garden from './pages/Garden';
 import DailyTasks from './pages/DailyTasks';
 import { PlantProvider } from './context/PlantContext';
+import { TaskNotesProvider } from './context/TaskNotesContext';
 import Dashboard from './pages/Dashboard';
 import FocusTimer from './pages/FocusTimer';
 import Login from './pages/Login';
@@ -11,10 +12,10 @@ import SignUp from './pages/SignUp';
 
 function App() {
   return (
-
     <PlantProvider>
+      <TaskNotesProvider>
         <Layout>
-        <Routes>
+          <Routes>
             <Route path="/" element={<Dashboard/>} />  
             <Route path="garden" element={<Garden/>} />
             <Route path="daily-tasks" element={<DailyTasks/>} />
@@ -25,6 +26,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </Layout>
+      </TaskNotesProvider>
     </PlantProvider>
   );
 }

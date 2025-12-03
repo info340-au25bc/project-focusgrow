@@ -1,6 +1,10 @@
+import { useContext, useState } from 'react';
 import TaskItem from './TaskItem';
+import { TaskNotesContext } from '../context/TaskNotesContext';
 
-export default function TaskSection({ tasks, taskForm, setTaskForm, onAdd, onDelete }) {
+export default function TaskSection() {
+  const { tasks, addTask, deleteTask } = useContext(TaskNotesContext);
+  const [taskForm, setTaskForm] = useState({ text: '', deadline: '' });
   return (
     <div className="bg-card-bg p-4 sm:p-6 rounded-xl shadow-card">
       <h2 className="text-xl sm:text-2xl font-bold text-nav-text mb-4">Tasks</h2>
@@ -16,7 +20,12 @@ export default function TaskSection({ tasks, taskForm, setTaskForm, onAdd, onDel
             className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent"
           />
           <button
-            onClick={onAdd}
+            onClick={() => {
+              if (taskForm.text.trim()) {
+                addTask(taskForm);
+                setTaskForm({ text: '', deadline: '' });
+              }
+            }}
             className="bg-accent text-white px-6 py-2 rounded-lg hover:opacity-90"
           >
             Add
@@ -34,7 +43,7 @@ export default function TaskSection({ tasks, taskForm, setTaskForm, onAdd, onDel
       {/* task list */}
       <ul className="space-y-2">
         {tasks.map((t) => (
-          <TaskItem key={t.id} task={t} onDelete={onDelete} />
+          <TaskItem key={t.id} task={t} onDelete={deleteTask} />
         ))}
       </ul>
 

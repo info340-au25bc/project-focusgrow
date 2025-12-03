@@ -1,6 +1,10 @@
+import { useContext, useState } from 'react';
 import NoteItem from './NoteItem';
+import { TaskNotesContext } from '../context/TaskNotesContext';
 
-export default function NoteSection({ notes, noteInput, setNoteInput, onAdd, onDelete }) {
+export default function NoteSection() {
+  const { notes, addNote, deleteNote } = useContext(TaskNotesContext);
+  const [noteInput, setNoteInput] = useState('');
   return (
     <div className="bg-card-bg p-4 sm:p-6 rounded-xl shadow-card">
       <h2 className="text-xl sm:text-2xl font-bold text-nav-text mb-4">Notes</h2>
@@ -16,7 +20,12 @@ export default function NoteSection({ notes, noteInput, setNoteInput, onAdd, onD
             className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent"
           />
           <button
-            onClick={onAdd}
+            onClick={() => {
+              if (noteInput.trim()) {
+                addNote(noteInput);
+                setNoteInput('');
+              }
+            }}
             className="bg-accent text-white px-6 py-2 rounded-lg hover:opacity-90"
           >
             Add
@@ -27,7 +36,7 @@ export default function NoteSection({ notes, noteInput, setNoteInput, onAdd, onD
       {/* note list */}
       <ul className="space-y-2">
         {notes.map((n, i) => (
-          <NoteItem key={i} note={n} onDelete={onDelete} idx={i} />
+          <NoteItem key={i} note={n} onDelete={deleteNote} idx={i} />
         ))}
       </ul>
 
