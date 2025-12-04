@@ -22,7 +22,7 @@ export default function DailyTasks() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* tasks section */}
-          <TaskSection />
+          <TaskSection tasks={sortedTasks} />
 
           {/* notes section */}
           <NoteSection />

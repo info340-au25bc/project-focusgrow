@@ -2,8 +2,9 @@ import { useContext, useState } from 'react';
 import TaskItem from './TaskItem';
 import { TaskNotesContext } from '../context/TaskNotesContext';
 
-export default function TaskSection() {
-  const { tasks, addTask, deleteTask } = useContext(TaskNotesContext);
+export default function TaskSection({ tasks: tasksProp }) {
+  const { tasks: ctxTasks, addTask, deleteTask } = useContext(TaskNotesContext);
+  const tasks = tasksProp ?? ctxTasks;
   const [taskForm, setTaskForm] = useState({ text: '', deadline: '' });
   return (
     <div className="bg-card-bg p-4 sm:p-6 rounded-xl shadow-card">
