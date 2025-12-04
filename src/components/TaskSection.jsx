@@ -5,6 +5,20 @@ import { TaskNotesContext } from '../context/TaskNotesContext';
 export default function TaskSection() {
   const { tasks, addTask, deleteTask } = useContext(TaskNotesContext);
   const [taskForm, setTaskForm] = useState({ text: '', deadline: '' });
+
+  // Sort tasks: tasks with deadlines first (sorted by date), then tasks without deadlines
+  const sortedTasks = [...tasks].sort((a, b) => {
+    // If both have deadlines, sort by date (earliest first)
+    if (a.deadline && b.deadline) {
+      return new Date(a.deadline) - new Date(b.deadline);
+    }
+    // Tasks with deadlines come before tasks without
+    if (a.deadline && !b.deadline) return -1;
+    if (!a.deadline && b.deadline) return 1;
+    // If neither has a deadline, maintain original order
+    return 0;
+  });
+
   return (
     <div className="bg-card-bg p-4 sm:p-6 rounded-xl shadow-card">
       <h2 className="text-xl sm:text-2xl font-bold text-nav-text mb-4">Tasks</h2>
@@ -42,7 +56,7 @@ export default function TaskSection() {
 
       {/* task list */}
       <ul className="space-y-2">
-        {tasks.map((t) => (
+        {sortedTasks.map((t) => (
           <TaskItem key={t.id} task={t} onDelete={deleteTask} />
         ))}
       </ul>
