@@ -57,11 +57,14 @@ export default function SignUp() {
     <div className="flex items-center justify-center min-h-[calc(100vh-64px)] bg-gradient-to-b from-white to-bg-gradient px-4 py-8">
       <div className="flex flex-col lg:flex-row-reverse bg-white rounded-2xl shadow-xl overflow-hidden max-w-5xl w-full">
         
-        {/* FIND GRAPHIC TO PUT HERE FOR DESIGN PURPOSES */}
         <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-nav-bg to-card-bg p-12 items-center justify-center">
           <div className="text-center">
             <div className="w-64 h-64 bg-white/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-              <span className="text-8xl">img placeholder</span>
+              <img 
+                src="public/plant-icon.png"
+                alt="A cute potted plant" 
+                className="size-48 object-contain" 
+              />
             </div>
             <h2 className="text-3xl font-bold text-nav-text mb-4">Start Growing Today!</h2>
             <p className="text-nav-text/80">Join FocusGrow and cultivate your productivity</p>
