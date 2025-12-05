@@ -18,7 +18,7 @@ export function TaskNotesProvider({ children }) {
     // sync from Firebase when user changes / logs in
     useEffect(() => {
         if (!user) {
-            // not logged in: keep local state (or you could clear)
+            // not logged in: keep local state
             return;
         }
 
