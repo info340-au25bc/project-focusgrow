@@ -16,11 +16,9 @@ export function TaskNotesProvider({ children }) {
     const [notes, setNotes] = useState(INITIAL_NOTES);
 
     // sync from Firebase when user changes / logs in
+    // not logged in: keep local state
     useEffect(() => {
-        if (!user) {
-            // not logged in: keep local state
-            return;
-        }
+        if (!user) return;
 
         const userRef = ref(db, `users/${user.uid}`);
 

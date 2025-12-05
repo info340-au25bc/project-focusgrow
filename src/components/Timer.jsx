@@ -11,7 +11,8 @@ const DURATIONS = {
 };
 
 export default function Timer({ onRunningChange }) {
-    const [mode, setMode] = useState("pomodoro"); // "pomodoro" | "short" | "long"
+    // "pomodoro" | "short" | "long"
+    const [mode, setMode] = useState("pomodoro");
     const [secondsLeft, setSecondsLeft] = useState(DURATIONS.pomodoro);
     const [isRunning, setIsRunning] = useState(false);
 

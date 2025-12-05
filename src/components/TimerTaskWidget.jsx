@@ -19,15 +19,14 @@ export default function TimerTaskWidget() {
             <h2 className="text-base font-semibold text-[#143a20]" id="timer-tasks-heading">
                 Tasks
             </h2>
-            {sortedTasks.length > 0 ? (
-                <ul className="list-disc pl-5 text-sm text-[#143a20] space-y-1.5">
+            {sortedTasks.length > 0
+                ? (<ul className="list-disc pl-5 text-sm text-[#143a20] space-y-1.5">
                     {sortedTasks.map((task) => (
                         <li key={task.id}>{task.text}</li>
                     ))}
-                </ul>
-            ) : (
-                <p className="text-sm text-[#143a20] italic">No tasks yet. Add one in Daily Tasks!</p>
-            )}
+                </ul>)
+                : (<p className="text-sm text-[#143a20] italic">No tasks yet. Add one in Daily Tasks!</p>)
+            }
         </section>
     );
 }

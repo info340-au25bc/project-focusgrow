@@ -32,9 +32,7 @@ export default function TimerModeToggle({ mode, onModeChange }) {
                             key={m.id}
                             type="button"
                             onClick={() => onModeChange(m.id)}
-                            className={`relative flex-1 flex items-center justify-center text-sm md:text-base font-semibold
-                ${isActive ? "text-white" : "text-[#08361b]"}
-              `}
+                            className={`relative flex-1 flex items-center justify-center text-sm md:text-base font-semibold  ${isActive ? "text-white" : "text-[#08361b]"}`}
                         >
                             {m.label}
                         </button>

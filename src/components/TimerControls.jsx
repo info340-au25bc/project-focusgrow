@@ -28,7 +28,8 @@ export default function TimerControls({ isRunning, onStart, onStop, onReset }) {
             <button
                 type="button"
                 onClick={onReset}
-                className="px-6 py-2 rounded-lg text-white text-sm md:text-base font-medium shadow-sm bg-yellow-700 hover:bg-yellow-800">
+                className="px-6 py-2 rounded-lg text-white text-sm md:text-base font-medium shadow-sm bg-yellow-700 hover:bg-yellow-800"
+            >
                 Reset
             </button>
         </div>
