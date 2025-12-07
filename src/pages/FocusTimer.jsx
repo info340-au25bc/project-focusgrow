@@ -7,7 +7,7 @@ export default function FocusTimer() {
     const [autoCollapse, setAutoCollapse] = useState(true);
 
     return (
-        <main className="flex min-h-[calc(100vh-64px)] bg-white">
+        <main className="flex bg-white mt-10">
             <TimerSidePanel
                 isTimerRunning={isTimerRunning}
                 autoCollapse={autoCollapse}

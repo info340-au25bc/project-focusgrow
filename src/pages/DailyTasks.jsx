@@ -16,7 +16,7 @@ export default function DailyTasks() {
   });
 
   return (
-    <main className="min-h-[calc(100vh-64px)] bg-gradient-to-b from-white to-bg-gradient py-6 px-4">
+    <main className="bg-gradient-to-b from-white to-bg-gradient py-6 px-4">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-nav-text text-center mb-8">Daily Tasks</h1>
 

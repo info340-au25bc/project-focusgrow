@@ -2,20 +2,22 @@ import { useState } from 'react';
 import GardenCard from '../components/GardenCard';
 import GardenSidebar from '../components/GardenSidebar';
 import { usePlants } from '../hooks/usePlants';
-import { Droplet } from 'lucide-react';
-
+import { Droplet, Menu, X } from 'lucide-react';
 
 export default function Garden() {
-  const { ownedPlants, coins, waterPlant } = usePlants();
+  const { ownedPlants, coins, water, waterPlant } = usePlants();
   const [selectedPlant, setSelectedPlant] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handlePlantClick = (plant) => {
     setSelectedPlant(plant);
   };
 
-  const handleWaterPlant = () => {
-    waterPlant(selectedPlant.id);
-    setSelectedPlant(null);
+  const handleWaterPlant = async () => {
+    const success = await waterPlant(selectedPlant.id);
+    if (success) {
+      setSelectedPlant(null);
+    }
   };
 
   const averageHealth = ownedPlants.length > 0 
@@ -26,14 +28,38 @@ export default function Garden() {
   const bottomRow = ownedPlants.slice(3, 5);
 
   return (
-    <main className="flex bg-gradient-to-b from-white to-bg-gradient flex-col lg:flex-row items-center">
-      <GardenSidebar 
-        totalPlants={ownedPlants.length} 
-        totalHealth={averageHealth}
-        coins={coins}
-      />
+    <main className="flex bg-gradient-to-b from-white to-bg-gradient flex-col lg:flex-row items-center min-h-[calc(100vh-10rem)]">
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="lg:hidden fixed bottom-10 left-4 z-50 bg-accent text-white p-3 rounded-full shadow-lg hover:opacity-90"
+      >
+        {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
 
-      <section className="flex-1 bg-gradient-to-b from-white to-bg-gradient flex flex-col items-center py-6 md:py-10 px-4 md:px-7 min-h-[calc(100vh-64px)]">
+      {sidebarOpen && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black/50 z-40"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+        <div className={`
+        fixed lg:static top-16 bottom-0 left-0 lg:inset-y-0 z-40 
+        transform transition-transform duration-300 ease-in-out
+        flex items-center justify-center
+
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}>
+        <GardenSidebar 
+            totalPlants={ownedPlants.length} 
+            totalHealth={averageHealth}
+            coins={coins}
+            water={water}
+        />
+        </div>
+
+
+      <section className="flex-1 bg-gradient-to-b from-white to-bg-gradient flex flex-col items-center py-6 md:py-10 px-4 md:px-7 w-full">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-nav-text mb-2">My Garden</h2>
         <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8">Take care of your plants by staying productive!</p>
 
@@ -74,10 +100,10 @@ export default function Garden() {
           >
             <img 
               src={selectedPlant.image} 
-              alt={selectedPlant.name} 
+              alt={selectedPlant.customGoal || selectedPlant.name} 
               className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto mb-4 object-cover rounded-full shadow-lg" 
             />
-            <h3 className="text-xl sm:text-2xl font-bold text-nav-text mb-2 text-center">{selectedPlant.name}</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-nav-text mb-2 text-center">{selectedPlant.customGoal || selectedPlant.name}</h3>
             <p className="text-sm sm:text-base text-gray-600 mb-4 text-center">
               Owned for {selectedPlant.daysOwned} {selectedPlant.daysOwned === 1 ? 'day' : 'days'}
             </p>
@@ -95,7 +121,7 @@ export default function Garden() {
 
               <div className="bg-muted p-3 rounded-lg">
                 <p className="font-semibold text-nav-text mb-1">Goal Progress</p>
-                <p className="text-sm text-gray-600 mb-2">{selectedPlant.goal}</p>
+                <p className="text-sm text-gray-600 mb-2">{selectedPlant.customGoal || selectedPlant.goal}</p>
                 <div className="w-full h-3 bg-nav-text rounded-lg overflow-hidden">
                   <div 
                     className="h-full bg-gradient-to-r from-blue-400 to-blue-600"
@@ -109,18 +135,23 @@ export default function Garden() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <button 
-              onClick={handleWaterPlant} 
-              className="flex items-center justify-center gap-2 flex-1 bg-accent text-white py-2 sm:py-2.5 px-4 rounded-lg hover:opacity-90 font-medium text-sm sm:text-base"
-            >
-              <Droplet size={35}/> Water Plant (+10 health)
-            </button>
-            <button 
-              onClick={() => setSelectedPlant(null)} 
-              className="flex-1 bg-gray-300 text-gray-700 py-2 sm:py-2.5 px-4 rounded-lg hover:opacity-90 font-medium text-sm sm:text-base"
-            >
-              Close
-            </button>
+              <button 
+                onClick={handleWaterPlant} 
+                disabled={water < 10}
+                className={`flex items-center justify-center gap-2 flex-1 py-2 sm:py-2.5 px-4 rounded-lg font-medium text-sm sm:text-base ${
+                  water >= 10 
+                    ? 'bg-accent text-white hover:opacity-90' 
+                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                <Droplet size={35}/> Water Plant (+10 health)
+              </button>
+              <button 
+                onClick={() => setSelectedPlant(null)} 
+                className="flex-1 bg-gray-300 text-gray-700 py-2 sm:py-2.5 px-4 rounded-lg hover:opacity-90 font-medium text-sm sm:text-base"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>

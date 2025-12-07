@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react';
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   
   const navigate = useNavigate();
   const auth = getAuth();
@@ -64,15 +68,24 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-nav-text mb-2">Password</label>
-              <input
-                type="password"
+            <label className="block text-sm font-semibold text-nav-text mb-2">Password</label>
+            <div className="relative">
+                <input
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-accent focus:outline-none transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-accent focus:outline-none transition-colors pr-12"
                 placeholder="••••••••"
-              />
+                />
+                <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
+                </button>
+            </div>
             </div>
 
             {error && (

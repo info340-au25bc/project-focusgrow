@@ -7,22 +7,30 @@ import Notification from '../components/Notification.jsx';
 
 export default function PlantStore() {
   const [selectedPlant, setSelectedPlant] = useState(null);
+  const [customGoal, setCustomGoal] = useState('');
   const [notification, setNotification] = useState(null);
   const { coins, purchasePlant, ownedPlants, loading, error } = usePlants();
   const navigate = useNavigate();
 
   const handlePlantClick = (plant) => {
     setSelectedPlant(plant);
+    setCustomGoal('');
   };
 
   const handlePurchase = async () => {
     if (!selectedPlant) return;
 
-    const success = await purchasePlant(selectedPlant);
+    if (!customGoal.trim()) {
+      setNotification({ message: 'Please enter a goal for this plant!', type: 'error' });
+      return;
+    }
+
+    const success = await purchasePlant(selectedPlant, customGoal);
     
     if (success) {
       setNotification({ message: `Successfully purchased ${selectedPlant.name}!`, type: 'success' });
       setSelectedPlant(null);
+      setCustomGoal('');
       setTimeout(() => navigate('/garden'), 1500); 
     } else {
       setNotification({ message: 'Not enough coins or purchase failed!', type: 'error' });
@@ -32,6 +40,8 @@ export default function PlantStore() {
   const availablePlants = PLANTS.filter(
     plant => !ownedPlants.some(owned => owned.id === plant.id)
   );
+
+  const remainingCoins = selectedPlant ? coins - selectedPlant.price : coins;
 
   if (loading) return null;
 
@@ -71,8 +81,18 @@ export default function PlantStore() {
             <p className="text-sm sm:text-base text-gray-600 mb-4 text-center">{selectedPlant.description}</p>
             <div className="space-y-2 mb-4 md:mb-6 text-sm sm:text-base">
               <p><span className="font-semibold">Price:</span> {selectedPlant.price} coins</p>
+              <p><span className="font-semibold">Remaining:</span> {remainingCoins} coins</p>
               <p><span className="font-semibold">Growth Stage:</span> {selectedPlant.growthStage}</p>
-              <p><span className="font-semibold">Goal:</span> {selectedPlant.goal}</p>
+              <div>
+                <label className="block font-semibold mb-2">Set Your Goal:</label>
+                <input
+                  type="text"
+                  value={customGoal}
+                  onChange={(e) => setCustomGoal(e.target.value)}
+                  placeholder="e.g., Complete daily workout"
+                  className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-accent focus:outline-none text-sm sm:text-base"
+                />
+              </div>
               <p><span className="font-semibold">Health:</span> {selectedPlant.health}%</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">

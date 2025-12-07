@@ -12,11 +12,11 @@ export default function GardenCard({ plant, onClick }) {
     >
       <img 
         src={plant.image} 
-        alt={plant.name}
+        alt={plant.customGoal}
         className="w-24 h-24 sm:w-28 sm:h-28 bg-nav-bg rounded-full shadow-inset-plant object-cover"
       />
       <div className="text-center w-full">
-        <h3 className="font-semibold text-nav-text text-sm">{plant.name}</h3>
+        <h3 className="font-semibold text-nav-text text-sm">{plant.customGoal}</h3>
         <p className="text-xs text-gray-600">
           {plant.daysOwned} {plant.daysOwned === 1 ? 'day' : 'days'} old
         </p>
