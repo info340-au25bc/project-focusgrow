@@ -20,7 +20,7 @@ export default function TimerSidePanel({ isTimerRunning, autoCollapse, onToggleA
         <aside
             className={`
                 hidden md:flex
-                fixed left-4 top-1/2 -translate-y-1/2 z-20
+                fixed left-4 top-[calc(50%+0.5rem)] -translate-y-1/2 z-20
                 overflow-hidden
                 transition-[width,transform] duration-300 ease-out
                 ${isCollapsed ? "w-12" : "w-96"}
@@ -41,7 +41,8 @@ export default function TimerSidePanel({ isTimerRunning, autoCollapse, onToggleA
                 />
 
                 {!isCollapsed && (
-                    <div className="mt-3 flex-1 flex flex-col gap-4 max-h-[calc(100vh-160px)] overflow-y-auto pr-1">
+                    <div className="mt-3 flex-1 flex flex-col gap-4 
+                        max-h-[calc(100vh-15rem)] overflow-y-auto pr-1">
                         <div className="flex items-center gap-2">
                             <input
                                 id="auto-collapse-toggle"

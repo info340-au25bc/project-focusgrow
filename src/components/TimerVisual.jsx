@@ -55,7 +55,7 @@ export default function TimerVisual({ progress }) {
                 <img
                     src="/img/roots.png"
                     alt="A small plant sprouting from the soil"
-                    className="w-40 h-40 object-contain"
+                    className="w-50 h-50 object-contain rounded-full"
                 />
             </div>
         </div>

@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import TimerVisual from "./TimerVisual";
 import TimerModeToggle from "./TimerModeToggle";
 import TimerControls from "./TimerControls";
+import WaterPlantModal from "./WaterPlantModal";
+import { usePlants } from "../hooks/usePlants";
 
 // durations in seconds
 const DURATIONS = {
@@ -15,6 +17,9 @@ export default function Timer({ onRunningChange }) {
     const [mode, setMode] = useState("pomodoro");
     const [secondsLeft, setSecondsLeft] = useState(DURATIONS.pomodoro);
     const [isRunning, setIsRunning] = useState(false);
+    const [showWaterModal, setShowWaterModal] = useState(false);
+
+    const { water, addWater } = usePlants();
 
     const notifyRunning = (running) => {
         if (typeof onRunningChange === "function") {
@@ -39,6 +44,14 @@ export default function Timer({ onRunningChange }) {
                     clearInterval(id);
                     setIsRunning(false);
                     notifyRunning(false);
+
+                    if (mode === "pomodoro") {
+                        addWater(10);
+                        if (water + 10 >= 10) {
+                            setShowWaterModal(true);
+                        }
+                    }
+
                     return 0;
                 }
                 return prev - 1;
@@ -95,6 +108,9 @@ export default function Timer({ onRunningChange }) {
                 onStop={handleStop}
                 onReset={handleReset}
             />
+
+            {/* water plant modal */}
+            {showWaterModal && <WaterPlantModal onClose={() => setShowWaterModal(false)} />}
         </div>
     );
 }
