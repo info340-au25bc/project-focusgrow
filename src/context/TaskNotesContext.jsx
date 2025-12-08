@@ -85,6 +85,16 @@ export function TaskNotesProvider({ children }) {
         });
     };
 
+    const completeTask = (id) => {
+        setTasks((prev) => {
+            const next = prev.map((t) =>
+                t.id === id ? { ...t, completed: !t.completed } : t
+            );
+            syncTasks(next);
+            return next;
+        });
+    };
+
     const addNote = (note) => {
         setNotes((prev) => {
             const next = [...prev, note];
@@ -108,6 +118,7 @@ export function TaskNotesProvider({ children }) {
                 notes,
                 addTask,
                 deleteTask,
+                completeTask,
                 addNote,
                 deleteNote,
             }}
