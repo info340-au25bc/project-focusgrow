@@ -44,20 +44,15 @@ export default function TimerTaskWidget() {
                 </h2>
                 {sortedTasks.length > 0
                     ? (<ul className="list-none pl-0 text-sm text-[#143a20] space-y-2">
-                        {sortedTasks.map((task) => (
+                        {sortedTasks.slice(0, 3).map((task) => (
                             <li key={task.id} className="flex items-center justify-between bg-white p-2 rounded-md">
                                 <div className="flex-1 mr-3 text-sm text-[#143a20]">
-                                    <span className={`${task.completed
-                                        ? 'line-through opacity-60'
-                                        : ''}`}
-                                    >
+                                    <span className={`${task.completed ? 'line-through opacity-60' : ''}`}>
                                         {task.text}
-
                                     </span>
                                     {task.deadline && (
                                         <span className="ml-2 text-xs text-accent font-medium">
-                                            ({new Date(task.deadline).toLocaleDateString('en-US',
-                                                { month: 'short', day: 'numeric' })})
+                                            ({new Date(task.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })})
                                         </span>
                                     )}
                                 </div>
@@ -66,7 +61,8 @@ export default function TimerTaskWidget() {
                                     onClick={() => handleComplete(task.id)}
                                     className={`${task.completed
                                         ? 'bg-gray-500'
-                                        : 'bg-green-500'} text-white px-3 py-1 rounded-lg hover:opacity-90 text-sm font-medium`}
+                                        : 'bg-green-500'} 
+                                        text-white px-3 py-1 rounded-lg hover:opacity-90 text-sm font-medium`}
                                 >
                                     {task.completed ? "Undo" : "Complete"}
                                 </button>

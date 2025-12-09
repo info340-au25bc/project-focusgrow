@@ -26,15 +26,14 @@ export default function Timer({ onRunningChange }) {
             onRunningChange(running);
         }
     };
-
-    // reset timer
+    // reset timer when mode changes
     useEffect(() => {
         setSecondsLeft(DURATIONS[mode]);
         setIsRunning(false);
         notifyRunning(false);
     }, [mode]);
 
-    // countdown
+    // countdown / completion logic
     useEffect(() => {
         if (!isRunning) return;
 
@@ -45,6 +44,7 @@ export default function Timer({ onRunningChange }) {
                     setIsRunning(false);
                     notifyRunning(false);
 
+                    // award water only for pomodoro session
                     if (mode === "pomodoro") {
                         addWater(10);
                         if (water + 10 >= 10) {
