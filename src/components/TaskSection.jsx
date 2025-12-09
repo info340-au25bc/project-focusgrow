@@ -12,24 +12,13 @@ export default function TaskSection({ tasks: tasksProp }) {
   const { addWater } = usePlants();
 
   const handleCompleteTask = (taskId) => {
-    // Find the task to check its current state
     const task = tasks.find(t => t.id === taskId);
-    const wasIncomplete = !task?.completed; // Check if task is currently incomplete
-
-    // Mark task as complete/incomplete (toggle)
     completeTask(taskId);
-
-    if (wasIncomplete) {
-      // Task was incomplete, now being marked complete
-      // Award 10 water points for completing the task
-      addWater(10);
-
-      // Show modal (they'll now have at least 10 water)
-      setShowWaterModal(true);
-    } else {
-      // Task was complete, now being marked incomplete (Undo)
-      // Deduct 10 water points
+    if (task.completed) {
       addWater(-10);
+    } else {
+      addWater(10);
+      setShowWaterModal(true);
     }
   };
   return (
