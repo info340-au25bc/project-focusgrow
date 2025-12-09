@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function HomeCard({ to, size = "sm", className = "", children}) {
+export default function HomeCard({ to, size = "sm", className = "", children }) {
     const sizeClasses =
         size === "lg" ? "w-full h-80 p md:max-w-xl md:h-80" : "size-70 md:size-64";
 

@@ -7,8 +7,8 @@ export default function GardenSidebar({ totalPlants, totalHealth, coins, water }
         <div className="min-h-[calc(100vh-14rem)] flex justify-center items-center">
             <aside className="w-72 lg:h-auto bg-card-bg p-4 flex flex-col gap-3 shadow-lg overflow-y-auto rounded-lg">
                 <GardenStatCard totalPlants={totalPlants} totalHealth={totalHealth} />
-                    <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-2 mb-2">
+                <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
+                    <div className="flex items-center gap-2 mb-2">
                         <div className="bg-yellow-200 p-1.5 rounded-full">
                             <Coins className="text-yellow-600" size={18} />
                         </div>
@@ -22,7 +22,7 @@ export default function GardenSidebar({ totalPlants, totalHealth, coins, water }
                 <div className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
                     <div className="flex items-center gap-2 mb-3">
                         <div className="bg-red-100 p-1.5 rounded-full">
-                        <Heart className="text-red-500" size={18} />
+                            <Heart className="text-red-500" size={18} />
                         </div>
                         <h3 className="text-lg font-bold text-nav-text">Care Tips</h3>
                     </div>

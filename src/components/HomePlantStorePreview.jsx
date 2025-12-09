@@ -24,10 +24,10 @@ export default function HomePlantStorePreview({ ownedPlants, coins }) {
 
             <div className="flex justify-center md:h-20 md:scale-50 gap-4 mt-2 md:mt-0 md:mb-2 md:gap-8">
                 {previewPlants.length > 0 ? (
-                previewPlants.map((plant) => (
-                    <div key={plant.id} className="w-full h-full">
-                        <GardenCard plant={plant} onClick={() => {}} className="cursor-pointer" />
-                    </div>))) : (
+                    previewPlants.map((plant) => (
+                        <div key={plant.id} className="w-full h-full">
+                            <GardenCard plant={plant} onClick={() => { }} className="cursor-pointer" />
+                        </div>))) : (
                     <p className="text-gray-500">No new plants available</p>
                 )}
             </div>

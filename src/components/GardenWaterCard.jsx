@@ -1,6 +1,6 @@
 import { Droplet } from "lucide-react";
 
-export default function GardenWaterCard({ water }){
+export default function GardenWaterCard({ water }) {
     return (
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
             <div className="flex items-center gap-2 mb-2">
